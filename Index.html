@@ -16,32 +16,44 @@
 	   <p> Hello and welcome to the Caribbean Treasure hunt. This game is currently in development thank you for playing and if you have any questions</p> 
 	   <p>please feel free to conteact me at: <a href="mailto:lafrance.banton1@marist.edu">Lafrance.Banton1@marist.edu.</a> HAVE FUN!!! 
 	   </div>
-	   <script type="text/javascript">
-	    document.getElementById("textboxmsg").innerHTML = "Hello Dolly.";
+	   <script>
 	   <!--Global Variables-->
-	   //var score = 0;
+	   var score = 0;
 	   //var Curlocation = 0;
-	   //var Vlocation = 1;
-	   //var Vlocation = 2;
-	   //var Vlocation = 3;
-	   //var Vlocation = 4;
-       <!--Initialization->  
+	   //var Nlocation = 1;
+	   //var Slocation = 2;
+	  // var Elocation = 3;
+	   //var Wlocation = 4;
+	   function btnNorth_click(){
+	   document.getElementById("msg").value = "Welcome to Cuba! care for a Cuban Cigar or some of our world class Cuban coffee?.";
+	      }
+	   function btnSouth_click(){
+	   document.getElementById("msg").value = "Welcome to Panama City.";
+	     }
+	   function btnEast_click(){
+	   document.getElementById("msg").value = "Welcome to Dominican Republic.";
+	     }
+	   function btnWest_click(){
+	   document.getElementById("msg").value = "Welcome to the Cayman Islands.";
+	     }
+	  <!--Initialization->  
 </script>	   
 </head>
-       <textarea id="textboxmsg" rows="10" cols="80" >You’re on a ship in Port Royal in Island of Jamaica, ready to venture through Paradise hoping to find some last treasure. Please click on the button below to start your treasure hunt continue!  </textarea>                           
+       <textarea id="msg" rows="10" cols="80" >You’re on a ship in Port Royal in Island of Jamaica, ready to venture through Paradise hoping to find some last treasure. Please click on the button below to start your treasure hunt continue!
+	   </textarea>                           
        <br>
        <input type="button" 
               value="North"
-              onclick="btnorth_click();">
+              onclick="btnNorth_click();">
        <input type="button" 
               value="South"
-              onclick="btnWSouth_click();">
+              onclick="btnSouth_click();">
        <input type="button" 
               value="East"
               onclick="btnEast_click();">
        <input type="button" 
               value="West"
-              onclick="btnSWest_click();">
+              onclick="btnWest_click();">
 		  
 <body>
 
