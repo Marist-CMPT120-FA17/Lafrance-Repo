@@ -16,31 +16,32 @@
 	   <p> Hello and welcome to the Caribbean Treasure hunt. This game is currently in development thank you for playing and if you have any questions</p> 
 	   <p>please feel free to conteact me at: <a href="mailto:lafrance.banton1@marist.edu">Lafrance.Banton1@marist.edu.</a> HAVE FUN!!! 
 	   </div>
+	   <body>
 	   <script>
 	   <!--Global Variables-->
 	   var score = 0;
-	   //var Curlocation = 0;
+	   var Curlocation = 0;
 	   //var Nlocation = 1;
 	   //var Slocation = 2;
-	  // var Elocation = 3;
+	   //var Elocation = 3;
 	   //var Wlocation = 4;
+	   <!--Event handler for each button north, south, East, West-->
 	   function btnNorth_click(){
-	   document.getElementById("msg").value = "Welcome to Cuba! care for a Cuban Cigar or some of our world class Cuban coffee?.";
+	   document.getElementById("message").value = "Welcome to Cuba! care for a Cuban Cigar or some of our world class Cuban coffee?.";
 	      }
 	   function btnSouth_click(){
-	   document.getElementById("msg").value = "Welcome to Panama City.";
+	   document.getElementById("message").value = "Welcome to Panama City! feel free to search the City you may be lucky to find your fortune or not.";
 	     }
 	   function btnEast_click(){
-	   document.getElementById("msg").value = "Welcome to Dominican Republic.";
+	   document.getElementById("message").value = "Welcome to Dominican Republic there is a lot of bared treasure off the sore of Punta Cana. Don't forget to bring you shovel.";
 	     }
 	   function btnWest_click(){
-	   document.getElementById("msg").value = "Welcome to the Cayman Islands.";
-	     }
-	  <!--Initialization->  
-</script>	   
-</head>
-       <textarea id="msg" rows="10" cols="80" >You’re on a ship in Port Royal in Island of Jamaica, ready to venture through Paradise hoping to find some last treasure. Please click on the button below to start your treasure hunt continue!
-	   </textarea>                           
+	   document.getElementById("message").value = "Welcome to the Cayman Islands don't forget to check-in by our Treasure Island Resort.";
+	     }  
+</script>
+       <textarea id="message" rows="10" cols="80" >You’re on a ship in Port Royalof the Coast of Jamaica, ready to venture through Paradise hoping to find some treasure. Please click on the button below to start your treasure hunt!
+	   </textarea>
+	      <!--Four button implimentation--> 
        <br>
        <input type="button" 
               value="North"
@@ -54,11 +55,8 @@
        <input type="button" 
               value="West"
               onclick="btnWest_click();">
-		  
-<body>
-
+</body>
 <footer>
 <p>Copyright&copy; 2017 Lafrance Banton. All rights Reserved. last update 9/22/2017</P>
 </footer>
-</body>
 </html>
