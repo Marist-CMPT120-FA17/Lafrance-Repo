@@ -20,8 +20,8 @@
 	   <script>
 	   <!--Global Variables-->
 	   var score = 0;
-	   var Curlocation = 0;
-	   <!--Event handler for each button north, south, East, West-->
+	    <!--keep score function->				   
+	    <!--Event handler for each button north, south, East, West-->
 	   function btnNorth_click(){
 	   document.getElementById("message").value = "Welcome to Cuba! care for some Cuban Cigar or some of our world class Cuban coffee?.";
 	      }
@@ -33,12 +33,14 @@
 	            }
 	            function btnWest_click(){
 	            document.getElementById("message").value = "Welcome to the Cayman Islands don't forget to check-in by our Treasure Island Resort.";
-	               }  
+	              }				 				
 </script>
-       <textarea id="message" rows="10" cols="80" >You’re on a ship in Port Royalof the Coast of Jamaica, ready to venture through Paradise hoping to find some treasure. Please click on the button below to start your treasure hunt!
+          <!--textarea-->
+       <textarea id="message" rows="10" cols="80" >You’re on a ship in Port Royal of the Coast of Jamaica, ready to venture through Paradise hoping to find some treasure. Please click on the button below to start your treasure hunt!
 	   </textarea>
 	      <!--Four button implimentation--> 
        <br>
+	   
        <input type="button" 
               value="North"
               onclick="btnNorth_click();">
@@ -51,6 +53,10 @@
        <input type="button" 
               value="West"
               onclick="btnWest_click();">
+			 <!-- score Keeper-->
+	  <p><textarea id = "currentscore" name="currentscore" > Score:0
+	     </textarea>
+	  <p/> 
 </body>
 <footer>
 <p>Copyright&copy; 2017 Lafrance Banton. All rights Reserved. last update 9/22/2017</P>
