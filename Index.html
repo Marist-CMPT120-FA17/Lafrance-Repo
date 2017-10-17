@@ -1,4 +1,5 @@
-<!DOCTYPE>
+<!DOCTYPE html>
+<html>
 <html lang="en"> 
 <meta charset="utf-8">
 <!--*******************************************
@@ -13,33 +14,56 @@
 	   </title>
 	   <div style="background-color:lightblue;color:white;padding:20px;">
 	   <h1>Welcome to the Caribbean Treasure Hunt!</h1>
-	   <p> Hello and welcome to the Caribbean Treasure hunt. This game is currently in development thank you for playing and if you have any questions</p> 
+	   <p>Hello and welcome to the Caribbean Treasure hunt. This game is currently in development thank you for playing and if you have any questions</p> 
 	   <p>please feel free to conteact me at: <a href="mailto:lafrance.banton1@marist.edu">Lafrance.Banton1@marist.edu.</a> HAVE FUN!!! 
 	   </div>
 	   <body>
 	   <script>
-	   <!--Global Variables-->
-	   var score = 0;			   
-	    <!--Event handler for each button north, south, East, West-->
-	   function btnNorth_click(){
-	   document.getElementById("message").value = "Welcome to Cuba! care for some Cuban Cigar or some of our world class Cuban coffee?.";
-	      }
-	      function btnSouth_click(){
-	      document.getElementById("message").value = "Welcome to Panama City! feel free to search the City you may be lucky to find your fortune or not.";
-	         }
-	         function btnEast_click(){
-	         document.getElementById("message").value = "Welcome to Dominican Republic there is a lot of buried treasure off the sore of Punta Cana. Don't forget to bring you shovel.";
-	            }
-	            function btnWest_click(){
-	            document.getElementById("message").value = "Welcome to the Cayman Islands don't forget to check-in by our Treasure Island Resort.";
-	              }				 				
+	                                                <!--Global Variables-->
+	     var score = 0;
+		 var currentloc = 
+	     var VisitedLoc0 = false;
+         var VisitedLoc1 = false;
+         var VisitedLoc2 = false;
+         var VisitedLoc3 = false;
+         var VisitedLoc4 = false;
+                  
+   
+  <!--locations-->
+	     function look() {
+            var desc = "";
+	                switch(currentLoc) {
+               case 0: desc = "0. You’re on a ship in Port Royal of the Coast of Jamaica, ready to venture through Paradise hoping to find some treasure. Please click on the button below to start your treasure hunt!
+                       break;
+               case 1: desc = "1. Welcome to Panama City! feel free to search the City you may be lucky to find your fortune or not.";
+                       break; 
+               case 2: desc = "2. Welcome to Dominican Republic there is a lot of buried treasure off the sore of Punta Cana. Don't forget to bring you shovel.";
+                       break;
+               case 3: desc = "3. Say hi to Stuart at his (not burned) Comic book store.";
+                       break;
+               case 4: desc = "4. Welcome to Dominican Republic there is a lot of buried treasure off the sore of Punta Cana. Don't forget to bring you shovel.";(knock, knock knock) Penny!";
+                       break;
+               default: desc = "Sorry You cannot go that way";
+            }
+ <!--Event handler for each button for North, South, East, West-->
+	  // function btnNorth_click(){
+	  //document.getElementById("message").value = 
+	  //    }
+	  //    function btnSouth_click(){
+	  //    document.getElementById("message").value = 
+	  //      }
+	  //       function btnEast_click(){
+	  //       document.getElementById("message").value = 
+	  //          }
+	  //          function btnWest_click(){
+	  //          document.getElementById("message").value = "Welcome to the Cayman Islands don't forget to check-in by our Treasure Island Resort.";
+	  //            }				 				
 </script>
-          <!--textarea-->
+       <!--Textarea-->
        <textarea id="message" rows="10" cols="80" >You’re on a ship in Port Royal of the Coast of Jamaica, ready to venture through Paradise hoping to find some treasure. Please click on the button below to start your treasure hunt!
 	   </textarea>
-	      <!--Four button implimentation--> 
+	   <!--Four button implimentation--> 
        <br>
-	   
        <input type="button" 
               value="North"
               onclick="btnNorth_click();">
@@ -52,12 +76,12 @@
        <input type="button" 
               value="West"
               onclick="btnWest_click();">
-			 <!-- score Keeper-->
-	  <p><textarea id = "currentscore" name="currentscore" > Score:0
+			 <!-- Score Keeper-->
+	  <p><textarea id = "score" name="cscore" > Score:0
 	     </textarea>
 	  <p/> 
 </body>
 <footer>
-<p>Copyright&copy; 2017 Lafrance Banton. All rights Reserved. last update 9/22/2017</P>
+<p>Copyright&copy; 2017 Lafrance Banton. All rights Reserved. last update 10/18 /2017</P>
 </footer>
 </html>
