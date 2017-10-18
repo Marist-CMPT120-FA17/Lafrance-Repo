@@ -22,7 +22,7 @@
  <!--Global Variables-->
          var S;
 	     var score = 0;
-		 var currentloc = 0;
+		 var currentLoc = 0;
 		 var erroLoc = 0;
 	     var VisitedLoc0 = false;
          var VisitedLoc1 = false;
@@ -30,22 +30,42 @@
          var VisitedLoc3 = false;
          var VisitedLoc4 = false;
   <!--debug aid--!>		 
-		 consile.log(currentLoc); 
-		 
+ consile.log(btnNorth_click); 	 
   <!--Initialization-->
          function init() {
             look();
          }
-
  <!--Event handler for each button for North, South, East, West-->
+ 
+ //   function btnNorth_click() {
+ //           if (currentLoc === 0) {
+ //              currentLoc = 1;
+ //              look();               
+ //           } else {
+ //              if (currentLoc === 3) {
+ //                 currentLoc = 0;
+ //                 look();            
+ //             } else {
+ //                navigationError(); 
+ //              }
+ //            }            
+ //       }
+ //
 	     function btnNorth_click(){
 	        if (currentLoc===0){
-			    currentLoc = 1;
-			    return score=0:
-			else 
-            if (currentLoc===1)
-                 return score+=5)			
-	        }
+			    currentLoc=1;
+			    return score=0;
+				look();
+		   } else { 
+               if (currentLoc===1){
+			       currentLoc=2;
+                   return score+=5;
+	               look();
+              } else{
+	            navigationError();
+				}
+             }				
+        }      			  
 	      // function btnSouth_click(){
 	     
 	       //  }
@@ -58,7 +78,7 @@
 	     function look() {
             var desc = "";
 	                switch(currentLoc) {
-               case 0: desc = "0. You’re on a ship in Port Royal of the Coast of Jamaica, ready to venture through Paradise hoping to find some treasure. Please click on the button below to start your treasure hunt!;
+               case 0: desc = "0. You’re on a ship in Port Royal of the Coast of Jamaica, ready to venture through Paradise hoping to find some treasure. Please click on the button below to start your treasure hunt!";
                        break;
                case 1: desc = "1. Welcome to Panama City! feel free to search the City you may be lucky to find your fortune or not.";
                        break; 
@@ -70,28 +90,29 @@
                        break;
                default: desc = "Sorry You cannot go that way";
             }
-			checkScore();
-            desc = desc + "\n" + "Score: " + score ;
+            desc = desc;
             displayMessage(desc);
+			document.getElementById("Score").innerHTML = "\n"+score;
 			} 
 	function displayMessage(msg) {
             var target = document.getElementById("message");
             target.value = msg + "\n\n" + target.value;
-         }			 
+         }				 
 </script>
        <!--Textarea-->
 	   <body onload="init();">
        <textarea id="message" name="message" rows="10" cols="80" ></textarea>
-	          <input type="text" 
+       <!--command and go button-->
+	   <br>
+	   Command:
+	   <input type="text" 
               id = "txtCommand"
               name="txtCommand">
-       <!--command and go button--!>
-	   
-       <input type="button"
+	   <input type="button"
               value="Go" 
               onclick="btnGo_click();" /> 
+	   </br> 
 	   <!--Four button implimentation--> 
-       <br>
        <input type="button" 
               value="North"
               onclick="btnNorth_click();">
@@ -105,9 +126,10 @@
               value="West"
               onclick="btnWest_click();">
 			 <!-- Score Keeper-->
-	  <p><textarea id = "score" name="score" > Score:0
-	     </textarea>
-	  <p/> 
+       <br>
+	   <p>Score:<textarea id = "Score" name="Score" >
+	      </textarea>
+	   <p/> 
 </body>
 <footer>
 <p>Copyright&copy; 2017 Lafrance Banton. All rights Reserved. last update 10/18 /2017</P>
