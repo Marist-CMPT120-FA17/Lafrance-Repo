@@ -5,7 +5,7 @@
 <!--*******************************************
     *       Author:Lafrance Banton            *
     *       Date: 9/22/2017                   *
-	*       Project 2 Game V0.2               *
+	*       Project 2 Game V0.4               *
     *       Coures:CMTP 120L                  *
 	*******************************************-->
 	<head>
@@ -19,21 +19,46 @@
 	   </div>
 	   <body>
 	   <script>
-	                                                <!--Global Variables-->
+ <!--Global Variables-->
+         var S;
 	     var score = 0;
 		 var currentloc = 0;
+		 var erroLoc = 0;
 	     var VisitedLoc0 = false;
          var VisitedLoc1 = false;
          var VisitedLoc2 = false;
          var VisitedLoc3 = false;
          var VisitedLoc4 = false;
-                  
-   
-  <!--locations-->
+  <!--debug aid--!>		 
+		 consile.log(currentLoc); 
+		 
+  <!--Initialization-->
+         function init() {
+            look();
+         }
+
+ <!--Event handler for each button for North, South, East, West-->
+	     function btnNorth_click(){
+	        if (currentLoc===0){
+			    currentLoc = 1;
+			    return score=0:
+			else 
+            if (currentLoc===1)
+                 return score+=5)			
+	        }
+	      // function btnSouth_click(){
+	     
+	       //  }
+	       //function btnEast_click(){
+	             
+	          // }
+	           //function btnWest_click(){
+	          //}
+			   <!--locations-->
 	     function look() {
             var desc = "";
 	                switch(currentLoc) {
-               case 0: desc = "0. You’re on a ship in Port Royal of the Coast of Jamaica, ready to venture through Paradise hoping to find some treasure. Please click on the button below to start your treasure hunt!
+               case 0: desc = "0. You’re on a ship in Port Royal of the Coast of Jamaica, ready to venture through Paradise hoping to find some treasure. Please click on the button below to start your treasure hunt!;
                        break;
                case 1: desc = "1. Welcome to Panama City! feel free to search the City you may be lucky to find your fortune or not.";
                        break; 
@@ -45,25 +70,26 @@
                        break;
                default: desc = "Sorry You cannot go that way";
             }
- <!--Event handler for each button for North, South, East, West-->
-	     function btnNorth_click(){
-	        if (currentLoc===0)
-			    return score+=5:
-			else 	
-	        }
-	       function btnSouth_click(){
-	     
-	         }
-	       function btnEast_click(){
-	             
-	           }
-	           function btnWest_click(){
-	          
-	             }				 				
+			checkScore();
+            desc = desc + "\n" + "Score: " + score ;
+            displayMessage(desc);
+			} 
+	function displayMessage(msg) {
+            var target = document.getElementById("message");
+            target.value = msg + "\n\n" + target.value;
+         }			 
 </script>
        <!--Textarea-->
-       <textarea id="message" rows="10" cols="80" >You’re on a ship in Port Royal of the Coast of Jamaica, ready to venture through Paradise hoping to find some treasure. Please click on the button below to start your treasure hunt!
-	   </textarea>
+	   <body onload="init();">
+       <textarea id="message" name="message" rows="10" cols="80" ></textarea>
+	          <input type="text" 
+              id = "txtCommand"
+              name="txtCommand">
+       <!--command and go button--!>
+	   
+       <input type="button"
+              value="Go" 
+              onclick="btnGo_click();" /> 
 	   <!--Four button implimentation--> 
        <br>
        <input type="button" 
@@ -79,7 +105,7 @@
               value="West"
               onclick="btnWest_click();">
 			 <!-- Score Keeper-->
-	  <p><textarea id = "score" name="cscore" > Score:0
+	  <p><textarea id = "score" name="score" > Score:0
 	     </textarea>
 	  <p/> 
 </body>
