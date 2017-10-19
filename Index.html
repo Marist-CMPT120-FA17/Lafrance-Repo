@@ -20,7 +20,6 @@
 	   <body>
 	   <script>
  <!--Global Variables-->
-         var S;
 	     var score = 0;
 		 var currentLoc = 0;
 		 var erroLoc = 0;
@@ -30,7 +29,8 @@
          var VisitedLoc3 = false;
          var VisitedLoc4 = false;
   <!--debug aid--!>		 
- consile.log(btnNorth_click); 	 
+	       console.log(btnNorth_click);
+           console.log(currentLoc); 
   <!--Initialization-->
          function init() {
             look();
@@ -51,23 +51,63 @@
  //            }            
  //       }
  //
-	     function btnNorth_click(){
+	function btnNorth_click(){
 	        if (currentLoc===0){
-			    currentLoc=1;
-			    return score=0;
+			    currentLoc = 1;
+			    score += 5;
 				look();
 		   } else { 
                if (currentLoc===1){
-			       currentLoc=2;
-                   return score+=5;
+                   score += 5;
 	               look();
               } else{
-	            navigationError();
+	            return score;
 				}
              }				
-        }      			  
+        }
+	 function btnSouth_click(){
+	        if (currentLoc===0){
+			    currentLoc = 1;
+			    score += 5;
+				look();
+		   } else { 
+               if (currentLoc===1){
+                   score += 5;
+	               look();
+              } else{
+	            return score;
+				}
+             }				
+        }
+	 function btnEast_click(){
+	        if (currentLoc===0){
+			    currentLoc = 1;
+			    score += 5;
+				look();
+		   } else { 
+               if (currentLoc===1){
+                   score += 5;
+	               look();
+              } else{
+	            return score;
+				}
+             }				
+        } 
+	 function btnWest_click(){
+	        if (currentLoc===0){
+			    currentLoc = 1;
+			    score += 5;
+				look();
+		   } else { 
+               if (currentLoc===1){
+                   score += 5;
+	               look();
+              } else{
+	            return score;
+				}
+             }				
+        }      				
 	      // function btnSouth_click(){
-	     
 	       //  }
 	       //function btnEast_click(){
 	             
@@ -78,21 +118,21 @@
 	     function look() {
             var desc = "";
 	                switch(currentLoc) {
-               case 0: desc = "0. You’re on a ship in Port Royal of the Coast of Jamaica, ready to venture through Paradise hoping to find some treasure. Please click on the button below to start your treasure hunt!";
+               case 0: desc = "0. You’re on a ship in Port Royal, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure. Please click on the navigation button below to navigate your ship! Please click on (North, South, East, Or West)!!!";
                        break;
-               case 1: desc = "1. Welcome to Panama City! feel free to search the City you may be lucky to find your fortune or not.";
+               case 1: desc = "1. Welcome to Dominican Republic there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring your shovel.";
                        break; 
-               case 2: desc = "2. Welcome to Dominican Republic there is a lot of buried treasure off the sore of Punta Cana. Don't forget to bring you shovel.";
+               case 2: desc = "2. Welcome to Panama City please feel free to search the City, you may be lucky to find your fortune.";
                        break;
-               case 3: desc = "3. Welcome to the Cayman Islands don't forget to check-in by our Treasure Island Resort.";
+               case 3: desc = "3. Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.";
                        break;
-               case 4: desc = "4. Welcome to Dominican Republic there is a lot of buried treasure off the sore of Punta Cana. Don't forget to bring you shovel.";
+               case 4: desc = "4. Welcome to Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring you shovel and watch out for the sea shells.";
                        break;
-               default: desc = "Sorry You cannot go that way";
+              default: desc = "5. Sorry You cannot go that way";
             }
             desc = desc;
             displayMessage(desc);
-			document.getElementById("Score").innerHTML = "\n"+score;
+			document.getElementById("Score").innerHTML = "Score:"+score;
 			} 
 	function displayMessage(msg) {
             var target = document.getElementById("message");
@@ -127,11 +167,11 @@
               onclick="btnWest_click();">
 			 <!-- Score Keeper-->
        <br>
-	   <p>Score:<textarea id = "Score" name="Score" >
-	      </textarea>
-	   <p/> 
+	   <textarea id = "Score" name="Score" >
+	   </textarea>
+	   </br>
 </body>
 <footer>
-<p>Copyright&copy; 2017 Lafrance Banton. All rights Reserved. last update 10/18 /2017</P>
+<p>Copyright&copy; 2017 Lafrance Banton. All rights Reserved. last update 10/19/2017</P>
 </footer>
 </html>
