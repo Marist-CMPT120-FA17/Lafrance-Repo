@@ -66,8 +66,8 @@
              }				
         }
 	 function btnSouth_click(){
-	        if (currentLoc===0){
-			    currentLoc = 1;
+	        if (currentLoc===1){
+			    currentLoc = 2;
 			    score += 5;
 				look();
 		   } else { 
@@ -80,8 +80,8 @@
              }				
         }
 	 function btnEast_click(){
-	        if (currentLoc===0){
-			    currentLoc = 1;
+	        if (currentLoc===2){
+			    currentLoc = 4;
 			    score += 5;
 				look();
 		   } else { 
@@ -94,8 +94,8 @@
              }				
         } 
 	 function btnWest_click(){
-	        if (currentLoc===0){
-			    currentLoc = 1;
+	        if (currentLoc===4){
+			    currentLoc = 0;
 			    score += 5;
 				look();
 		   } else { 
