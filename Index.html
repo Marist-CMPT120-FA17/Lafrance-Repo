@@ -51,14 +51,14 @@
  //            }            
  //       }
  //
-	function btnNorth_click(){
+	 function btnNorth_click(){
 	        if (currentLoc===0){
 			    currentLoc = 1;
 			    score += 5;
 				look();
 		   } else { 
-               if (currentLoc===1){
-                   score += 5;
+               if (currentLoc===3){
+			       currentLoc = 0;
 	               look();
               } else{
 	            return score;
@@ -107,15 +107,8 @@
 				}
              }				
         }      				
-	      // function btnSouth_click(){
-	       //  }
-	       //function btnEast_click(){
-	             
-	          // }
-	           //function btnWest_click(){
-	          //}
 			   <!--locations-->
-	     function look() {
+	 function look() {
             var desc = "";
 	                switch(currentLoc) {
                case 0: desc = "0. You’re on a ship in Port Royal, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure. Please click on the navigation button below to navigate your ship! Please click on (North, South, East, Or West)!!!";
@@ -128,21 +121,56 @@
                        break;
                case 4: desc = "4. Welcome to Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring you shovel and watch out for the sea shells.";
                        break;
-              default: desc = "5. Sorry You cannot go that way";
+	           case 5: desc = "5. Welcome to Yhe Bahams  .";
+                       break;
+			   case 6: desc = "6. Welcome to Miami.";
+                       break;	   
+			   case 7: desc = "7. Welcome to Turks and Caicos Islands.";
+                       break; 
+		       case 8: desc = "8. Welcome to Haiti.";
+                       break;
+			   case 9: desc = "9. Welcome to Aruba.";
+                       break;	   
+			   case 10:desc = "10. welcome to Costa Rica.";
+			           break;
+              default: desc = "11. Sorry You cannot go that way";
             }
             desc = desc;
             displayMessage(desc);
 			document.getElementById("Score").innerHTML = "Score:"+score;
 			} 
 	function displayMessage(msg) {
-            var target = document.getElementById("message");
-            target.value = msg + "\n\n" + target.value;
-         }				 
+             var target = document.getElementById("message");
+             target.value = msg + "\n\n" + target.value;
+         }
+             <!--User input function-->	
+			 
+  /*  function btnGo_click() {
+             var Cardinala_direction = document.getElementById("txtCommand").value;
+             var response = "";
+                        
+            if (Cardinala_direction === "N") {
+               response = "Click on the North button to navigate your ship north bound!";
+            } else {
+               if (Cardinala_direction === "S") {
+                  response = "click on the South button to navigate your ship south bound";
+               } else {
+			       if (Cardinala_direction === "E") {
+                       response = "Click on the East button to navigate your ship East bound!";
+                  } else {
+                     if (Cardinala_direction === "W") {
+                         response = "click on the West button below to navigate your ship West bound";
+                     } else {
+                  response = "Please type in the N,S,A,E in the command:";
+               }
+            }
+		}	
+            document.getElementById("message").value = "\n"+response;*/	 
 </script>
        <!--Textarea-->
 	   <body onload="init();">
        <textarea id="message" name="message" rows="10" cols="80" ></textarea>
-       <!--command and go button-->
+       <!--Command line and go button-->
 	   <br>
 	   Command:
 	   <input type="text" 
