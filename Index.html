@@ -7,7 +7,6 @@
     *       Date: 9/22/2017                   *
 	*       Project 2 Game V0.4               *
     *       Coures:CMTP 120L                  *
-	 test
 	*******************************************-->
 	<head>
 	   <title>
@@ -15,8 +14,6 @@
 	   </title>
 	   <div style="background-color:lightblue;color:white;padding:20px;">
 	   <h1>Welcome to the Caribbean Treasure Hunt!</h1>
-	   <p>Hello and welcome to the Caribbean Treasure hunt. This game is currently in development thank you for playing and if you have any questions</p> 
-	   <p>please feel free to conteact me at: <a href="mailto:lafrance.banton1@marist.edu">Lafrance.Banton1@marist.edu.</a> HAVE FUN!!! 
 	   </div>
 	   <body>
 	   <script>
@@ -29,29 +26,15 @@
          var VisitedLoc2 = false;
          var VisitedLoc3 = false;
          var VisitedLoc4 = false;
-  <!--debug aid--!>		 
-	       console.log(btnNorth_click);
-           console.log(currentLoc); 
+		 
+		 
+  <!--Debug aid--!>		 
+	       console.log();
   <!--Initialization-->
          function init() {
             look();
          }
  <!--Event handler for each button for North, South, East, West-->
- 
- //   function btnNorth_click() {
- //           if (currentLoc === 0) {
- //              currentLoc = 1;
- //              look();               
- //           } else {
- //              if (currentLoc === 3) {
- //                 currentLoc = 0;
- //                 look();            
- //             } else {
- //                navigationError(); 
- //              }
- //            }            
- //       }
- //
 	 function btnNorth_click(){
 	        if (currentLoc===0){
 			    currentLoc = 1;
@@ -122,7 +105,7 @@
                        break;
                case 4: desc = "4. Welcome to Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring you shovel and watch out for the sea shells.";
                        break;
-	           case 5: desc = "5. Welcome to Yhe Bahams  .";
+	           case 5: desc = "5. Welcome to Yhe Bahams.";
                        break;
 			   case 6: desc = "6. Welcome to Miami.";
                        break;	   
@@ -143,30 +126,29 @@
 	function displayMessage(msg) {
              var target = document.getElementById("message");
              target.value = msg + "\n\n" + target.value;
-         }
-             <!--User input function-->	
-			 
-  /*  function btnGo_click() {
-             var Cardinala_direction = document.getElementById("txtCommand").value;
-             var response = "";
-                        
-            if (Cardinala_direction === "N") {
-               response = "Click on the North button to navigate your ship north bound!";
+            }
+             <!--Cardinala direction-->			 
+    function btnGo_click() {
+             var Cardinala_direction = "";			 
+             alert( Cardinala_direction); 
+            if (Cardinala_direction != "N") {
+               alert("Click on the North button to navigate your ship north bound!");
             } else {
-               if (Cardinala_direction === "S") {
-                  response = "click on the South button to navigate your ship south bound";
+               if (Cardinala_direction !="S") {
+                  alert("click on the South button to navigate your ship south bound");
                } else {
-			       if (Cardinala_direction === "E") {
-                       response = "Click on the East button to navigate your ship East bound!";
+			       if (Cardinala_direction !="E") {
+                       alert("Click on the East button to navigate your ship East bound!");
                   } else {
-                     if (Cardinala_direction === "W") {
-                         response = "click on the West button below to navigate your ship West bound";
+                     if (Cardinala_direction !="W") {
+                         alert("click on the West button below to navigate your ship West bound");
                      } else {
-                  response = "Please type in the N,S,A,E in the command:";
+                  alert("Please type in the N,S,E,W, or n,s,e,w in the command:");
                }
             }
-		}	
-            document.getElementById("message").value = "\n"+response;*/	 
+			 var commandBox = document.getElementById("txtCommand");
+			 commandBox.value = Cardinala_direction
+
 </script>
        <!--Textarea-->
 	   <body onload="init();">
@@ -175,11 +157,11 @@
 	   <br>
 	   Command:
 	   <input type="text" 
-              id = "txtCommand"
+              id = "txtCommand" 
               name="txtCommand">
 	   <input type="button"
               value="Go" 
-              onclick="btnGo_click();" /> 
+              onclick="btnGo_click();" />
 	   </br> 
 	   <!--Four button implimentation--> 
        <input type="button" 
@@ -199,6 +181,8 @@
 	   <textarea id = "Score" name="Score" >
 	   </textarea>
 	   </br>
+<p>Hello and welcome to the Caribbean Treasure hunt. This game is currently in development thank you for playing and if you have any questions</p>
+<p>Please feel free to contact me at: <a href="mailto:lafrance.banton1@marist.edu">Lafrance.Banton1@marist.edu.</a> If you have any questions HOPE you enjoy and HAVE FUN!!! 
 </body>
 <footer>
 <p>Copyright&copy; 2017 Lafrance Banton. All rights Reserved. last update 10/19/2017</P>
