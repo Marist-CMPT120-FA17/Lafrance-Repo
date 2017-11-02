@@ -106,9 +106,9 @@
 	 function look() {
             var desc = "";
 	                switch(currentLoc) {
-               case 0: desc = "0. You’re on a ship in Port Royal, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure.";
+               case 0: desc = "0. You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure.";
                        break;
-               case 1: desc = "1. Welcome to Dominican Republic there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring your shovel.";
+               case 1: desc = "1. Welcome to Cuba don't forget to check out Havana for some cubain cegar.";
                        break; 
                case 2: desc = "2. Welcome to Panama City please feel free to search the City, you may be lucky to find your fortune.";
                        break;
@@ -116,7 +116,7 @@
                        break;
                case 4: desc = "4. Welcome to Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring you shovel and watch out for the sea shells.";
                        break;
-	           case 5: desc = "5. Welcome to Yhe Bahams.";
+	           case 5: desc = "5. Welcome to the Bahamas.";
                        break;
 			   case 6: desc = "6. Welcome to Miami.";
                        break;	   
@@ -156,13 +156,9 @@
     function updatemessage(){
 	        }  
              <!--help butten-->			 
-    /*function btnhlp_click() {
-             var Cardinal_direct = "";
-             var north = "N";			 
-            if (Cardinal_direct = "N") {
+    function btnhlp_click() {
              alert("Please Click on the navigation button below (North, South, East, West) or type in the following letters (N,S,E,W,n,s,e,w,) to navigate your ship!!!");
                }
-            }*/
 </script>
        <!--Textarea-->
 	   <body onload="init();">
@@ -190,12 +186,18 @@
        <input type="button" 
               value="West"
               onclick="btnWest_click();">
+	   <input type="button" 
+              value="Help"
+              onclick="btnhlp_click();">
+	   <input type="button" 
+              value="Trasure"
+              onclick="btnitem_click();">
 			 <!-- Score Keeper-->
        <br>
 	   <textarea id = "Score" name="Score" >
 	   </textarea>
 	   </br>
-	   <img src="CTUgamemap.GIF" alt="Gamemap" style="width:800px;height:600px;">
+	   <img src="CTUgamemap.GIF" alt="Gamemap" style="width:1400px;height:600px;">
 <p>Hello and welcome to the Caribbean Treasure hunt. This game is currently in development thank you for playing and if you have any questions</p>
 <p>Please feel free to contact me at: <a href="mailto:lafrance.banton1@marist.edu">Lafrance.Banton1@marist.edu.</a> If you have any questions HOPE you enjoy and HAVE FUN!!! 
 </body>
