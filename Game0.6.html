@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<html lang="en"> 
+<meta charset="utf-8">
+<!--*******************************************
+    *       Author:Lafrance Banton            *
+    *       Date: 10/2/2017                   *
+	*       Project 2 Game V0.6              *
+    *       Coures:CMTP 120L                  *
+	*******************************************-->
+	<head>
+	   <title>
+	   The Caribbean Treasure Hunt Game
+	   </title>
+	   <div style="background-color:lightblue;color:white;padding:20px;">
+	   <h1>Welcome to the Caribbean Treasure Hunt!</h1>
+	   </div>
+	   <body>
+	   <script>
+ <!--Global Variables-->
+	     var score = 0;
+		 var currentLoc = 0;
+		 var erroLoc = 0;
+	     var VisitedLoc0 = false;
+         var VisitedLoc1 = false;
+         var VisitedLoc2 = false;
+         var VisitedLoc3 = false;
+         var VisitedLoc4 = false;	 
+  <!--Debug aid--!>		 
+	       console.log();
+  <!--Initialization-->
+    function init() {
+            look();
+        }
+	function Novi_erroLoc() {
+		erroLoc = erroLoc + 1;
+			if (erroLoc >= 1){
+			displayMessage("Sorry You cannot go that way");
+	       }
+		}
+    function UpdateDisplay(){
+		     message();
+		}
+ <!--Event handler for each button for North, South, East, West BUGG-->
+	 function btnNorth_click(){
+	        if (currentLoc===0){
+			    currentLoc = 1;
+			    score += 5;
+				look();
+		   } else { 
+               if (currentLoc===3){
+			       currentLoc = 0;
+	               look();
+				   Novi_erroLoc()
+              } else{
+	            return score;
+				}
+             }				
+        }
+	 function btnSouth_click(){
+	        if (currentLoc===1){
+			    currentLoc = 2;
+			    score += 5;
+				look();
+		   } else { 
+               if (currentLoc===1){
+                   score += 5;
+	               look();
+				   Novi_erroLoc()
+              } else{
+	            return score;
+				}
+             }				
+        }
+	 function btnEast_click(){
+	        if (currentLoc===2){
+			    currentLoc = 4;
+			    score += 5;
+				look();
+		   } else { 
+               if (currentLoc===1){
+                   score += 5;
+				   Novi_erroLoc()
+	               look();
+              } else{
+	            return score;
+				}
+             }				
+        } 
+	 function btnWest_click(){
+	        if (currentLoc===4){
+			    currentLoc = 0;
+			    score += 5;
+				look();
+		   } else { 
+               if (currentLoc===1){
+                   score += 5;
+	               look();
+				   Novi_erroLoc()
+              } else{
+	            return score;
+				}
+             }				
+        }      				
+			   <!--locations-->
+	 function look() {
+            var desc = "";
+	                switch(currentLoc) {
+               case 0: desc = "0. You’re on a ship in Port Royal, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure.";
+                       break;
+               case 1: desc = "1. Welcome to Dominican Republic there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring your shovel.";
+                       break; 
+               case 2: desc = "2. Welcome to Panama City please feel free to search the City, you may be lucky to find your fortune.";
+                       break;
+               case 3: desc = "3. Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.";
+                       break;
+               case 4: desc = "4. Welcome to Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring you shovel and watch out for the sea shells.";
+                       break;
+	           case 5: desc = "5. Welcome to Yhe Bahams.";
+                       break;
+			   case 6: desc = "6. Welcome to Miami.";
+                       break;	   
+			   case 7: desc = "7. Welcome to Turks and Caicos Islands.";
+                       break; 
+		       case 8: desc = "8. Welcome to Haiti.";
+                       break;
+			   case 9: desc = "9. Welcome to Aruba.";
+                       break;	   
+			   case 10:desc = "10. welcome to Costa Rica.";
+			           break;
+              default: desc = "11. Sorry You cannot go that way";
+            }
+            desc = desc;
+            displayMessage(desc);
+			document.getElementById("Score").innerHTML = "Score:"+score;
+			} 
+			<!--cardinal direction-->
+	function btnGo_click(){
+             var user_input = document.getElementById("txtCommand").value;
+		         if (user_input == "n") {
+				 btnNorth_click();
+		  } else if (user_input == "s") {
+			     btnSouth_click();
+		       } else if (user_input == "e") {
+			             btnEast_click();
+		               } else if (user_input == "w") {
+				                  btnWest_click();
+		                          } else {
+			                      displayMessage("Please Click on the navigation button below (North, South, East, West) or type in the following letters (N,S,E,W,n,s,e,w,) to navigate your ship!!!");
+		                        }
+			}	
+	function displayMessage(msg) {
+             var target = document.getElementById("message");
+             target.value = msg + "\n\n" + target.value;
+            }
+    function updatemessage(){
+	        }  
+             <!--help butten-->			 
+    /*function btnhlp_click() {
+             var Cardinal_direct = "";
+             var north = "N";			 
+            if (Cardinal_direct = "N") {
+             alert("Please Click on the navigation button below (North, South, East, West) or type in the following letters (N,S,E,W,n,s,e,w,) to navigate your ship!!!");
+               }
+            }*/
+</script>
+       <!--Textarea-->
+	   <body onload="init();">
+       <textarea id="message" name="message" rows="10" cols="80" ></textarea>
+       <!--Command line and go button-->
+	   <br>
+	   Command:
+	   <input type="text" 
+              id = "txtCommand" 
+              name="txtCommand">
+	   <input type="button"
+              value="Go" 
+              onclick="btnGo_click();">
+	   </br> 
+	   <!--Four button implimentation--> 
+       <input type="button" 
+              value="North"
+              onclick="btnNorth_click();">
+       <input type="button" 
+              value="South"
+              onclick="btnSouth_click();">
+       <input type="button" 
+              value="East"
+              onclick="btnEast_click();">
+       <input type="button" 
+              value="West"
+              onclick="btnWest_click();">
+			 <!-- Score Keeper-->
+       <br>
+	   <textarea id = "Score" name="Score" >
+	   </textarea>
+	   </br>
+	   <img src="CTUgamemap.GIF" alt="Gamemap" style="width:800px;height:600px;">
+<p>Hello and welcome to the Caribbean Treasure hunt. This game is currently in development thank you for playing and if you have any questions</p>
+<p>Please feel free to contact me at: <a href="mailto:lafrance.banton1@marist.edu">Lafrance.Banton1@marist.edu.</a> If you have any questions HOPE you enjoy and HAVE FUN!!! 
+</body>
+<footer>
+<p>Copyright&copy; 2017 Lafrance Banton. All rights Reserved. last update 11/2/2017</P>
+</footer>
+</html>
