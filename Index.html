@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <!--*******************************************
     *       Author:Lafrance Banton            *
-    *       Date: 9/22/2017                   *
+    *       Date: 10/2/2017                   *
 	*       Project 2 Game V0.4               *
     *       Coures:CMTP 120L                  *
 	*******************************************-->
@@ -25,9 +25,7 @@
          var VisitedLoc1 = false;
          var VisitedLoc2 = false;
          var VisitedLoc3 = false;
-         var VisitedLoc4 = false;
-		 
-		 
+         var VisitedLoc4 = false;	 
   <!--Debug aid--!>		 
 	       console.log();
   <!--Initialization-->
@@ -95,7 +93,7 @@
 	 function look() {
             var desc = "";
 	                switch(currentLoc) {
-               case 0: desc = "0. You’re on a ship in Port Royal, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure. Please click on the navigation button below to navigate your ship! Please click on (North, South, East, Or West)!!!";
+               case 0: desc = "0. You’re on a ship in Port Royal, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure.";
                        break;
                case 1: desc = "1. Welcome to Dominican Republic there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring your shovel.";
                        break; 
@@ -123,32 +121,35 @@
             displayMessage(desc);
 			document.getElementById("Score").innerHTML = "Score:"+score;
 			} 
+			<!--cardinal direction-->
+	function btnGo_click(){
+             var user_input = document.getElementById("txtCommand").value;
+		         if (user_input == "n") {
+				 btnNorth_click();
+		  } else if (user_input == "s") {
+			     btnSouth_click();
+		       } else if (user_input == "e") {
+			             btnEast_click();
+		               } else if (user_input == "w") {
+				                  btnWest_click();
+		                          } else {
+			                      displayMessage("Please Click on the navigation button below (North, South, East, West) or type in the following letters (N,S,E,W,n,s,e,w,) to navigate your ship!!!");
+		                        }
+			}	
 	function displayMessage(msg) {
              var target = document.getElementById("message");
              target.value = msg + "\n\n" + target.value;
             }
-             <!--Cardinala direction-->			 
-    function btnGo_click() {
-             var Cardinala_direction = "";			 
-             alert( Cardinala_direction); 
-            if (Cardinala_direction != "N") {
-               alert("Click on the North button to navigate your ship north bound!");
-            } else {
-               if (Cardinala_direction !="S") {
-                  alert("click on the South button to navigate your ship south bound");
-               } else {
-			       if (Cardinala_direction !="E") {
-                       alert("Click on the East button to navigate your ship East bound!");
-                  } else {
-                     if (Cardinala_direction !="W") {
-                         alert("click on the West button below to navigate your ship West bound");
-                     } else {
-                  alert("Please type in the N,S,E,W, or n,s,e,w in the command:");
+    function updatemessage(){
+	        }  
+             <!--help butten-->			 
+    /*function btnhlp_click() {
+             var Cardinal_direct = "";
+             var north = "N";			 
+            if (Cardinal_direct = "N") {
+             alert("Please Click on the navigation button below (North, South, East, West) or type in the following letters (N,S,E,W,n,s,e,w,) to navigate your ship!!!");
                }
-            }
-			 var commandBox = document.getElementById("txtCommand");
-			 commandBox.value = Cardinala_direction
-
+            }*/
 </script>
        <!--Textarea-->
 	   <body onload="init();">
@@ -161,7 +162,7 @@
               name="txtCommand">
 	   <input type="button"
               value="Go" 
-              onclick="btnGo_click();" />
+              onclick="btnGo_click();">
 	   </br> 
 	   <!--Four button implimentation--> 
        <input type="button" 
@@ -185,6 +186,6 @@
 <p>Please feel free to contact me at: <a href="mailto:lafrance.banton1@marist.edu">Lafrance.Banton1@marist.edu.</a> If you have any questions HOPE you enjoy and HAVE FUN!!! 
 </body>
 <footer>
-<p>Copyright&copy; 2017 Lafrance Banton. All rights Reserved. last update 10/19/2017</P>
+<p>Copyright&copy; 2017 Lafrance Banton. All rights Reserved. last update 11/2/2017</P>
 </footer>
 </html>
