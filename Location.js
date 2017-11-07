@@ -43,7 +43,7 @@
                if (currentLoc===3){
 			       currentLoc = 0;
 	               look();
-				   Novi_erroLoc()
+				   Novi_erroLoc();
               } else{
 	            return score;
 				}
@@ -58,7 +58,7 @@
                if (currentLoc===1){
                    score += 5;
 	               look();
-				   Novi_erroLoc()
+				   Novi_erroLoc();
               } else{
 	            return score;
 				}
@@ -72,7 +72,7 @@
 		   } else { 
                if (currentLoc===1){
                    score += 5;
-				   Novi_erroLoc()
+				   Novi_erroLoc();
 	               look();
               } else{
 	            return score;
@@ -88,7 +88,7 @@
                if (currentLoc===1){
                    score += 5;
 	               look();
-				   Novi_erroLoc()
+				   Novi_erroLoc();
               } else{
 	            return score;
 				}
