@@ -1,4 +1,4 @@
-            /*Location.js*/
+            /*Locations .js*/
 		  
 //<!--Global Variables-->
 
@@ -15,15 +15,19 @@
          var VisitedLoc7 = false;
          var VisitedLoc8 = false;
          var VisitedLoc9 = false;
-  //<!--add Global array for Location and Inventory-->
-   //      var Location =[9];
-	//	 var Treasure = ();
-  //<!--Debug Aid--!>		 
+		 
+   //   Add Global array for Locations  and Inventory
+   
+         var Locations = ["Jamaica","Panama City","CaymanIslands","DominicanRepublic","theBahamas","Miami","Haiti","Aruba","Costa Rica"];
+   	     var Treasure = ["Treasure-chest","Rare-pearl","Golden-compass","skull-key","Cuban cigar",""];
+	   
+   //   Debug Aid--!>	
+   
 	     console.log();
 		 
- // <!--Initialization-->
+   //   Initialization-->
     function init() {
-            look();
+            Locations();
         }
 	function Novi_erroLoc() {
 		erroLoc = erroLoc + 1;
@@ -34,16 +38,18 @@
     function UpdateDisplay(){
 		     message();
 		}
- //<!--Event handler for each button for North, South, East, West BUGG-->
+ //     Event handler for each button for North, South, East, West BUG needs******* to be remove******
 	 function btnNorth_click(){
 	        if (currentLoc===0){
 			    currentLoc = 1;
 			    score += 5;
-				look();
+				Locations ();
+				Treasure();
 		   } else { 
                if (currentLoc===3){
 			       currentLoc = 0;
-	               look();
+	               Locations  ();
+				   Treasure();
 				   Novi_erroLoc();
               } else{
 	            return score;
@@ -54,11 +60,12 @@
 	        if (currentLoc===1){
 			    currentLoc = 2;
 			    score += 5;
-				look();
+				Locations  ();
+				Treasure();
 		   } else { 
                if (currentLoc===1){
                    score += 5;
-	               look();
+	               Locations  ();
 				   Novi_erroLoc();
               } else{
 	            return score;
@@ -69,12 +76,14 @@
 	        if (currentLoc===2){
 			    currentLoc = 4;
 			    score += 5;
-				look();
+				Locations  ();
+				Treasure();
 		   } else { 
                if (currentLoc===1){
                    score += 5;
 				   Novi_erroLoc();
-	               look();
+	               Locations  ();
+				   Treasure();
               } else{
 	            return score;
 				}
@@ -84,47 +93,62 @@
 	        if (currentLoc===4){
 			    currentLoc = 0;
 			    score += 5;
-				look();
+				Locations  ();
+				Treasure();
 		   } else { 
                if (currentLoc===1){
                    score += 5;
-	               look();
+	               Locations();
+				   Treasure();
 				   Novi_erroLoc();
               } else{
 	            return score;
 				}
              }				
         } 
-    //		    Add Location prototype
-	  
-	//		   locations
-	 function look() {
-            var desc = "";
-	                switch(currentLoc) {
-               case 0: desc = "0. You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure.";
-                       break;
-               case 1: desc = "1. Welcome to Cuba don't forget to check out Havana for some cubain cegar.";
-                       break; 
-               case 2: desc = "2. Welcome to Panama City please feel free to search the City, you may be lucky to find your fortune.";
-                       break;
-               case 3: desc = "3. Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.";
-                       break;
-               case 4: desc = "4. Welcome to Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring you shovel and watch out for the sea shells.";
-                       break;
-	           case 5: desc = "5. Welcome to the Bahamas.";
-                       break;
-			   case 6: desc = "6. Welcome to Miami.";
-                       break;	   
-			   case 7: desc = "7. Welcome to Turks and Caicos Islands.";
-                       break; 
-		       case 8: desc = "8. Welcome to Haiti.";
-                       break;
-			   case 9: desc = "9. Welcome to Aruba.";
-                       break;	   
-			   case 10:desc = "10. welcome to Costa Rica.";
-			           break;
-              default: desc = "11. Sorry You cannot go that way";
-            }
+    //		    Add Locations  prototype
+	 function Locations(id, name, desc, item) {
+	 this.id = id;
+	 this.name = name;
+	 this.desc = desc;
+	 this.item = item;
+	 this.toString = function() {
+                               return "[Shape: name:" + this.name + " color:" + this.color + "]";
+                            }
+	}
+	          function Jamaica(){
+			       var message = "0. You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure.";
+			  }
+			  function Cuba(){
+			       var Message = "1. Welcome to Cuba don't forget to check out Havana for some cubain cegar.";
+			  }
+			  function Panama(){
+			       var message = "2. Welcome to Panama City please feel free to search the City, you may be lucky to find your fortune.";
+			  }
+			  function CaymanIslands(){
+				   var Message = "3. Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.";
+			  }
+			  function DominicanRepublic(){
+			  var  Message = "4. Welcome to Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring you shovel and watch out for the sea shells.";
+			  }
+			  function Bahamas(){
+			  var   Message = "5. Welcome to the Bahamas.";
+			  }
+			  function Miami(){
+			  var  Message = "6. Welcome to Miami.";
+			  }
+			  function TurksandCaicosIslands(){
+			  var  Message = "7. Welcome to Turks and Caicos Islands.";
+			  }
+			  function Haiti(){
+			  var	 Message = "8. Welcome to Haiti.";  
+			  }
+			  function Aruba(){
+			  var  Message = "9. Welcome to Aruba.";
+			  }
+			  function CostaRica(){
+			  var Message = "10. welcome to Costa Rica.";	  
+			  } 
             desc = desc;
             displayMessage(desc);
 			document.getElementById("Score").innerHTML = "Score:"+score;
@@ -132,13 +156,13 @@
 	//		<!--cardinal direction-->
 	function btnGo_click(){
              var user_input = document.getElementById("txtCommand").value;
-		         if (user_input == "n") {
+		         if (user_input == "n"|| user_input == "N") {
 				 btnNorth_click();
-		  } else if (user_input == "s") {
+		  } else if (user_input == "s" || user_input == "S") {
 			     btnSouth_click();
-		       } else if (user_input == "e") {
+		       } else if (user_input == "e"|| user_input == "e") {
 			             btnEast_click();
-		               } else if (user_input == "w") {
+		               } else if (user_input == "w" || user_input == "W" ) {
 				                  btnWest_click();
 		                          } else {
 			                      displayMessage("Please Click on the navigation button below (North, South, East, West) or type in the following letters (N,S,E,W,n,s,e,w,) to navigate your ship!!!");
@@ -155,38 +179,6 @@
              alert("Please Click on the navigation button below (North, South, East, West) or type in the following letters (N,S,E,W,n,s,e,w,) to navigate your ship!!!");
                }
 
-	        /*function Jamaica(){
-			       var message = "0. You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure.";
-			  }
-			  function Cuba(){
-			       var Message = "1. Welcome to Cuba don't forget to check out Havana for some cubain cegar.";
-			  }
-			  function Panama(){
-			       var message = "2. Welcome to Panama City please feel free to search the City, you may be lucky to find your fortune.";
-			  }
-			  function Cayman Islands(){
-				   var Message = "3. Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.";
-			  }
-			  function Dominican Republic(){
-			  var  Message = "4. Welcome to Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring you shovel and watch out for the sea shells.";
-			  }
-			  function Bahamas(){
-			  var   Message = "5. Welcome to the Bahamas.";
-			  }
-			  function Miami(){
-			  var  Message = "6. Welcome to Miami.";
-			  }
-			  function Turks and Caicos Islands(){
-			  var  Message = "7. Welcome to Turks and Caicos Islands.";
-			  }
-			  function Haiti(){
-			  var	 Message = "8. Welcome to Haiti.";  
-			  }
-			  function Aruba(){
-			  var  Message = "9. Welcome to Aruba.";
-			  }
-			  function Costa Rica(){
-			  var Message = "10. welcome to Costa Rica.";	  
-			  } */
+	    
 			  
 			 
