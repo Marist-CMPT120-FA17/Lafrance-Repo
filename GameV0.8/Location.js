@@ -16,8 +16,8 @@
          var VisitedLoc8 = false;
          var VisitedLoc9 = false;
   //<!--add Global array for Location and Inventory-->
-         var Location =[10];
-		 var Player-inventory = [5];
+   //      var Location =[9];
+	//	 var Treasure = ();
   //<!--Debug Aid--!>		 
 	     console.log();
 		 
@@ -95,10 +95,9 @@
 				}
              }				
         } 
-    //		    add Location prototype
+    //		    Add Location prototype
 	  
-	//		   <!--locations-->
-	 function Location
+	//		   locations
 	 function look() {
             var desc = "";
 	                switch(currentLoc) {
