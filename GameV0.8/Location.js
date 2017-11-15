@@ -1,4 +1,4 @@
-            /*Locations .js*/
+            /*location.js*/
 		  
 //<!--Global Variables-->
 
@@ -15,19 +15,45 @@
          var VisitedLoc7 = false;
          var VisitedLoc8 = false;
          var VisitedLoc9 = false;
+		 var VisitedLoc10 = false;
 		 
-   //   Add Global array for Locations  and Inventory
+   //   Add Global array for look  and Inventory
    
-         var Locations = ["Jamaica","Panama City","CaymanIslands","DominicanRepublic","theBahamas","Miami","Haiti","Aruba","Costa Rica"];
-   	     var Treasure = ["Treasure-chest","Rare-pearl","Golden-compass","skull-key","Cuban cigar",""];
+         var Locations = [];
+   	     var Treasure = [];
+		 var invantory = [];
+		 
+  //	 Add locations and items  prototype
+  //     ("Treasure-chest","Rare-pearl","Golden-compass","skull-key","Cuban cigar","")
+  
+	 function locations(id, name, desc, item) {
+	 this.id = id;
+	 this.name = "Montego Bay";
+	 this.desc = "0. You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure.";
+	 this.item = item
+	 display(myShape.toString());
+     } 
+  // Store some Locations in an array.
+  
+     locations[0]= Jamaica;
+	 locations[1]= Cuba;
+	 locations[2]= Panama;
+	 locations[3]= Haiti
+	 locations[4]= Domincain-Republic:
+	 locations[5]= Bahamas
+	 locations[6]= Miami
+	 locations[7]= Turks-and-Caicos;
+	 locations[8]= Haiti;
+	 locations[9]= Aruba;
+	 locations[10]= Costa-Rica;
 	   
-   //   Debug Aid--!>	
+  //   Debug Aid--!>	
    
 	     console.log();
 		 
    //   Initialization-->
     function init() {
-            Locations();
+            look();
         }
 	function Novi_erroLoc() {
 		erroLoc = erroLoc + 1;
@@ -40,15 +66,15 @@
 		}
  //     Event handler for each button for North, South, East, West BUG needs******* to be remove******
 	 function btnNorth_click(){
-	        if (currentLoc===0){
+	        if (currentLoc === 0){
 			    currentLoc = 1;
 			    score += 5;
-				Locations ();
+				look ();
 				Treasure();
 		   } else { 
-               if (currentLoc===3){
+               if (currentLoc === 3){
 			       currentLoc = 0;
-	               Locations  ();
+	               look();
 				   Treasure();
 				   Novi_erroLoc();
               } else{
@@ -57,15 +83,15 @@
              }				
         }
 	 function btnSouth_click(){
-	        if (currentLoc===1){
+	        if (currentLoc === 1){
 			    currentLoc = 2;
 			    score += 5;
-				Locations  ();
+				look();
 				Treasure();
 		   } else { 
-               if (currentLoc===1){
+               if (currentLoc === 1){
                    score += 5;
-	               Locations  ();
+	               look  ();
 				   Novi_erroLoc();
               } else{
 	            return score;
@@ -73,16 +99,16 @@
              }				
         }
 	 function btnEast_click(){
-	        if (currentLoc===2){
+	        if (currentLoc === 2){
 			    currentLoc = 4;
 			    score += 5;
-				Locations  ();
+				look();
 				Treasure();
 		   } else { 
-               if (currentLoc===1){
+               if (currentLoc === 1){
                    score += 5;
 				   Novi_erroLoc();
-	               Locations  ();
+	               look  ();
 				   Treasure();
               } else{
 	            return score;
@@ -90,15 +116,15 @@
              }				
         } 
 	 function btnWest_click(){
-	        if (currentLoc===4){
+	        if (currentLoc === 4){
 			    currentLoc = 0;
 			    score += 5;
-				Locations  ();
+				look  ();
 				Treasure();
 		   } else { 
-               if (currentLoc===1){
+               if (currentLoc === 1){
                    score += 5;
-	               Locations();
+	               look();
 				   Treasure();
 				   Novi_erroLoc();
               } else{
@@ -106,57 +132,15 @@
 				}
              }				
         } 
-    //		    Add Locations  prototype
-	 function Locations(id, name, desc, item) {
-	 this.id = id;
-	 this.name = name;
-	 this.desc = desc;
-	 this.item = item;
-	 this.toString = function() {
-                               return "[Shape: name:" + this.name + " color:" + this.color + "]";
-                            }
-	}
-	          function Jamaica(){
-			       var message = "0. You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure.";
-			  }
-			  function Cuba(){
-			       var Message = "1. Welcome to Cuba don't forget to check out Havana for some cubain cegar.";
-			  }
-			  function Panama(){
-			       var message = "2. Welcome to Panama City please feel free to search the City, you may be lucky to find your fortune.";
-			  }
-			  function CaymanIslands(){
-				   var Message = "3. Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.";
-			  }
-			  function DominicanRepublic(){
-			  var  Message = "4. Welcome to Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring you shovel and watch out for the sea shells.";
-			  }
-			  function Bahamas(){
-			  var   Message = "5. Welcome to the Bahamas.";
-			  }
-			  function Miami(){
-			  var  Message = "6. Welcome to Miami.";
-			  }
-			  function TurksandCaicosIslands(){
-			  var  Message = "7. Welcome to Turks and Caicos Islands.";
-			  }
-			  function Haiti(){
-			  var	 Message = "8. Welcome to Haiti.";  
-			  }
-			  function Aruba(){
-			  var  Message = "9. Welcome to Aruba.";
-			  }
-			  function CostaRica(){
-			  var Message = "10. welcome to Costa Rica.";	  
-			  } 
             desc = desc;
             displayMessage(desc);
 			document.getElementById("Score").innerHTML = "Score:"+score;
-			} 
+			
 	//		<!--cardinal direction-->
+	
 	function btnGo_click(){
              var user_input = document.getElementById("txtCommand").value;
-		         if (user_input == "n"|| user_input == "N") {
+		         if (user_input == "n"|| user_input == "N" || user_input == "north") {
 				 btnNorth_click();
 		  } else if (user_input == "s" || user_input == "S") {
 			     btnSouth_click();
