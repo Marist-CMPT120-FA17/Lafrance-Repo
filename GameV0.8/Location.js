@@ -19,9 +19,10 @@
 		 
    //   Add Global array for look  and Inventory
    
-         var Locations = [];
+         var locations = [];
    	     var Treasure = [];
-		 var Invintory = [];
+		 var items = [];
+		 var inventory = [];
 		 
   // Store Locations in an array.
   
@@ -33,20 +34,23 @@
 	 locations[5]= Bahamas;
 	 locations[6]= Miami;
 	 locations[7]= TurksandCaicos;
-	 locations[8]= Haiti;
-	 locations[9]= Aruba;
+	 locations[8]= Haiti; 
+	 locations[9]= Aruba;      
 	 locations[10]= CostaRica;
+	 Location.push(Jamaica, Cuba, Panama, Cayman, TurksandCaicos, Haiti, Aruba, CostaRica); 
 	 
   // item array 
      
-	 item[0]=Treasure-chest;
-	 item[1]=Rare-pearl;
-	 item[2]=Golden-compass;
-	 item[3]=Magic-skull-key;
-	 item[4]=Cuban-cigar;
+	 items[0] = Treasurechest;
+	 item[1] = Rarepearl;
+	 items[2] = Goldencompass;
+	 items[3] = Magicskullkey;
+	 items[4] = Cubancigar;
 	 
-	   
-		 
+	   //   Initialization 
+    function init() {
+             look();   
+	}	 
   //	 Add locations and items  prototype
   //     ("Treasure-chest","Rare-pearl","Golden-compass","Magic-skull-key","Cuban-cigar","")
   
@@ -54,11 +58,10 @@
 	 this.id = id;
 	 this.name = name;
 	 this.desc = desc;
-	 this.item = item;
-	 this.toString = function() {
-                                 (this.id + "" + this.name + "" + this.description);
-                            }
-     } 
+	 this.item = item; 
+	 locations.toString = function() {
+                                 return this.id + "" + this.name + "" + this.description + "" + this.item
+                            };
 	 var Jamaica = new locations(0,"Jamaica","You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure.","Treasure-chest");
 	 var Cuba = new locations(1,"Cuba","Welcome to Cuba don't forget to check out Havana for some cubain cegar.","Cuban-cigar"); 
 	 var Panama = new locations(2,"Panama","Welcome to Panama City please feel free to search the City, you may be lucky to find your fortune.",);
@@ -70,30 +73,28 @@
 	 var Haiti = new locations(8,"Haiti","Welcome to Haiti.",null);
 	 var Aruba = new locations(9,"Aruba","Welcome to Aruba.","Rare-pearl");
 	 var CostaRica = new locations(10,"Costa-Rica","Welcome to Costa Rica.","Golden Compass");
+	 }    
 	 
-	function item (id, name, desc, item) {
+	function items (id, name, desc, item) {
 	 this.id = id;
 	 this.name = name;
 	 this.desc = desc;
 	 this.item = item;
-	 this.toString = function() {
-                                 (this.id + "" + this.name + "" + this.description);
-    }
-	}
-	var Treasurechest new item(0,"Treasure chest", "Wow look what you found");
-	var Rarepearl new item(1,"Rare pearl","sweet");
-	var Magicskull key new item(2,"Magic skull key","Awesome");
-	var Cubancigar new item(3,"Cuban cigar");
-	var GoldenCompass new item(4,"Golden-Compass","You think your so cool");
-
+	 items.toString = function() {
+                                 return this.id + "" + this.name + "" + this.description + "" + this.item
+                            };
+	
+	
+	var Treasurechest new items (0,"Treasurechest" , "Wow! look what you found" , "Treasure chest");
+	var Rarepearl new items (1, "Rare-pearl" , "sweet" , "Rare pearl");
+	var Magicskullkey new items (2,"Magic-skullkey","Awesome","Magic skull key");
+	var Cubancigar new items (3,"Cubancigar","dont smoke the hold thing at once you just find a ","Cubancigar");
+	var GoldenCompass new items(4,"GoldenCompass","You think your so cool","Golden Compass");
+    }   
   //   Debug Aid	
    
-	     console.log();
+	     console.log(items[]);
 		 
-   //   Initialization 
-    function init() {
-            look();
-        }
 	function Novi_erroLoc() {
 		erroLoc = erroLoc + 1;
 			if (erroLoc >= 1){
@@ -105,16 +106,14 @@
   //	}
  //     Event handler for each button for North, South, East, West BUG needs******* to be remove******
 	 function btnNorth_click(){
-	        if (currentLoc === 0){
+	        if (locations[0] === 0){
 			    currentLoc = 1;
 			    score += 5;
 				look ();
-				Treasure();
 		   } else { 
                if (currentLoc === 3){
 			       currentLoc = 0;
 	               look();
-				   Treasure();
 				   Novi_erroLoc();
               } else{
 	            return score;
@@ -126,7 +125,6 @@
 			    currentLoc = 2;
 			    score += 5;
 				look();
-				Treasure();
 		   } else { 
                if (currentLoc === 1){
                    score += 5;
@@ -142,13 +140,11 @@
 			    currentLoc = 4;
 			    score += 5;
 				look();
-				Treasure();
 		   } else { 
                if (currentLoc === 1){
                    score += 5;
 				   Novi_erroLoc();
 	               look  ();
-				   Treasure();
               } else{
 	            return score;
 				}
@@ -159,7 +155,6 @@
 			    currentLoc = 0;
 			    score += 5;
 				look  ();
-				Treasure();
 		   } else { 
                if (currentLoc === 1){
                    score += 5;
@@ -171,11 +166,11 @@
 				}
              }				
         } 
-		    this.toString()= displayMessage;
+		    
             displayMessage(msg);
 			document.getElementById("Score").innerHTML = "Score:"+score;
 			
-	//		<!--cardinal direction-->
+	//		cardinal direction
 	
 	function btnGo_click(){
              var user_input = document.getElementById("txtCommand").value;
@@ -188,16 +183,16 @@
 		               } else if (user_input == "w" || user_input == "W" ) {
 				                  btnWest_click();
 		                          } else {
-			                      displayMessage("Please Click on the navigation button below (North, South, East, West) or type in the following letters (N,S,E,W,n,s,e,w,) to navigate your ship!!!");
+			                      updatedisplayMessage("Please Click on the navigation button below (North, South, East, West) or type in the following letters (N,S,E,W,n,s,e,w,) to navigate your ship!!!");
 		                        }
 			}	
-	function displayMessage(msg) {
+	function updatedisplayMessage(locations.toString ) {
              var target = document.getElementById("message");
-             target.value = msg +"\n\n" + target.value;
-            }
-    function updatemessage(){
-	        }  
-             <!--Help button-->			 
+             target.value = locations.toString +"\n\n" + target.value;
+            } 
+      //       Help button		 
     function btnhlp_click() {
              alert("Please Click on the navigation button below (North, South, East, West) or type in the following letters (N,S,E,W,n,s,e,w,) to navigate your ship!!!");
                }
+			   
+			   
