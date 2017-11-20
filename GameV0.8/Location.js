@@ -26,7 +26,7 @@
 		 
   // Store Locations in an array.
   
-  	 var Jamaica = new Location(0,"Jamaica","You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure.","Treasure chest");
+  	 var Jamaica = new Location(0,"Jamaica","You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure.","Treasure Chest");
 	 var Cuba = new Location(1,"Cuba","Welcome to Cuba don't forget to check out Havana for some cuban cigar.","Cuban Cigar"); 
 	 var Panama = new Location(2,"Panama","Welcome to Panama City please feel free to search the City, you may be lucky to find your fortune.",);
 	 var Cayman = new Location(3,"Cayman","Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.",);
@@ -73,9 +73,12 @@
 		console.log(currentLoc);
 		console.log(locations);
 		console.log(item);
+		console.log(score);
 		console.log(locations[currentLoc]);
 		var desc = locations[currentLoc].desc;
+//		var desc = item.name;
 		updatedisplayMessage(desc);
+		document.getElementById("Score").innerHTML = "Score:"+score; 
 	}
   //	 Add locations and items  prototype
   //     ("Treasure-chest","Rare-pearl","Golden-compass","Magic-skull-key","Cuban-cigar","")
@@ -99,7 +102,7 @@
 		this.item = item;
 		this.toString = function() {
                                  return this.id + "" + this.name + "" + this.description + "" + this.item;
-                            };
+                        };
 	}
 	
 
@@ -110,34 +113,34 @@
 	function Novi_erroLoc() {
 		erroLoc = erroLoc + 1;
 			if (erroLoc >= 1){
-			displayMessage("Sorry You cannot go that way");
-	       }
-		}
+			updatedisplayMessage("Sorry You cannot go that way");
+	        }
+	}
   //  function UpdateDisplay(){
   //	     message();
   //	}
  //     Event handler for each button for North, South, East, West BUG needs******* to be remove******
 	 function btnNorth_click(){
-	        if (currentLoc === 0){
+		if (currentLoc === 0){
 			    currentLoc = 1;
 			    score += 5;
 				look ();
-		   } else { 
-               if (currentLoc === 3){
+		}	else { 
+				if (currentLoc === 3){
 			       currentLoc = 0;
 	               look();
 				   Novi_erroLoc();
-              } else{
-	            return score;
-				}
-             }				
-        }
+                }	else{
+					return score;
+				    }
+            }				
+     }
 	 function btnSouth_click(){
-	        if (currentLoc === 1){
+		if (currentLoc === 1){
 			    currentLoc = 2;
 			    score += 5;
 				look();
-		   } else { 
+		    }else { 
                if (currentLoc === 1){
                    score += 5;
 	               look  ();
@@ -146,24 +149,25 @@
 	            return score;
 				}
              }				
-        }
+      }
 	 function btnEast_click(){
-	        if (currentLoc === 2){
+		if (currentLoc === 2){
 			    currentLoc = 4;
 			    score += 5;
 				look();
-		   } else { 
+		    } else { 
                if (currentLoc === 1){
                    score += 5;
 				   Novi_erroLoc();
 	               look  ();
-              } else{
-	            return score;
-				}
-             }				
-        } 
-	 function btnWest_click(){
-	        if (currentLoc === 4){
+               } else{
+	             return score;
+				 }
+               }				
+     }
+	 
+	function btnWest_click(){
+		if (currentLoc === 4){
 			    currentLoc = 0;
 			    score += 5;
 				look  ();
@@ -177,10 +181,7 @@
 	            return score;
 				}
              }				
-        } 	
-		
-	//		cardinal direction
-	
+        }
 	function btnGo_click(){
              var user_input = document.getElementById("txtCommand").value;
 		         if (user_input == "n"|| user_input == "N" || user_input == "north") {
@@ -194,7 +195,7 @@
 		                          } else {
 			                      updatedisplayMessage("Please Click on the navigation button below (North, South, East, West) or type in the following letters (N,S,E,W,n,s,e,w,) to navigate your ship!!!");
 		                        }
-			}	
+			}
 	function updatedisplayMessage(msg) {
              var target = document.getElementById("message");
              target.value = msg +"\n\n" + target.value;
