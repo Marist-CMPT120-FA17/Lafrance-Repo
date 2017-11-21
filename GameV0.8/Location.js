@@ -33,9 +33,9 @@
 	  var Cuba = new Location(1,"Cuba","Welcome to Cuba don't forget to check out Havana for some cuban cigar.","Cuban Cigar"); 
 	  var Panama = new Location(2,"Panama","Welcome to Panama City please feel free to search the City, you may be lucky to find your fortune.",);
 	  var Cayman = new Location(3,"Cayman","Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.",);
-	  var DomincainRepublic = new Location(4,"Domincain-Republic","",null);
-	  var Bahamas = new Location(5,"Bahamas","Welcome to Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring you shovel and watch out for the sea shells.",null);
-	  var Miami = new Location(6,"Miami","missing text","Magic Skull key" );
+	  var DomincainRepublic = new Location(4,"Domincain-Republic","Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring you shovel and watch out for the looters.",null);
+	  var Bahamas = new Location(5,"Bahamas","Welcome to the Bahamas" ,null);
+	  var Miami = new Location(6,"Miami","welcome to Miami, would you like to update you ship","Magic Skull key" );
 	  var TurksandCaicos = new Location(7,"Turks-and-Caicos","missing text",null);
 	  var Haiti = new Location(8,"Haiti","Welcome to Haiti.","missing text",null);
 	  var Aruba = new Location(9,"Aruba","Welcome to Aruba.","Rare-pearl");
@@ -68,16 +68,14 @@
 	items[3] = Magicskullkey;
 	items[4] = Cubancigar;
 	
-	//Item.push(Treasurechest, Rarepearl, GoldenCompass, Cubancigar);	
+	items.push[Treasurechest, Rarepearl, GoldenCompass, Cubancigar];	
 	
   // Initialization
   
     function init() {
                 
 	}
-	
-    function look(){
-		
+    function look(){	
   // Debug Aid
   
 		console.log(currentLoc);
@@ -86,31 +84,30 @@
 		console.log(score);
 		console.log(locations[currentLoc]);
 		var desc = locations[currentLoc].desc;
-		var name = items[hiddenTresure].desc;
+		var name = items[hiddenTresure].name;
 		
 		updatedisplayMessage(desc);
-		updatedisplayMessage(name);
-		document.getElementById("Score").innerHTML = "Score:"+score;
-		document.getElementById("inventory").innerHTML =""+name;
-		
+		displayinventorymsg(name);
+		scoremsg(score);
 	// this btnitem_click() function add treatures to inventory when found
 	
     function btnitem_click(){
 		if(hiddentTresure === 0){
-			Treasure.push(Treasurechest.name);  	
+			items.push(Treasurechest.name);  	
 		}else{
 			if(hiddentTresure === 1){
-				 Treasure.push(GoldenCompass.name);
+				 items.push(GoldenCompass.name);
 			}else{
 				if(hiddentTresure === 2){
-					Treasure.push(Magicskullkey.name); 
+					items.push(Magicskullkey.name); 
 				}else{
-					if(hiddentTresure ===3){
-						Treasure.push(Cubancigar.name); 
+					if(hiddentTresure === 3){
+						items.push(Cubancigar.name); 
 					}else{
 						if(hiddentTresure === 4){
 						}else{
-							
+							return items.length;
+							updatedisplayMessage("Sorry you have to find a Treasure before you can retrive it with the TAKEITEM button" );
 			            }
 					}
 		        }
@@ -156,12 +153,12 @@
 	function btnNorth_click(){
 		if (currentLoc === 0|| hiddenTresure === 0){
 			    currentLoc = 1;
-				hiddenTresure = 1;
+				hiddenTresure = 0;
 			    score += 5;
 				look ();
 		}	else { 
-				if (currentLoc === 3){
-			       currentLoc = 0;
+				if (currentLoc === 1||hiddenTresure === 1){
+			       currentLoc = 2;
 	               look();
 				   Novi_erroLoc();			   
                 }	else{
@@ -173,7 +170,7 @@
 		if (currentLoc === 1||hiddenTresure === 1){
 			    currentLoc = 2;
 			    score += 5;
-				hiddenTresure = 1;
+				hiddenTresure = 2;
 				look();
 		    }else { 
                if (currentLoc === 1){
@@ -203,6 +200,7 @@
 	function btnWest_click(){
 		if (currentLoc === 4||hiddenTresure === 4){
 			    currentLoc = 3;
+				hiddenTresure = 6
 			    score += 5;
 				look  ();
 		   } else { 
@@ -216,7 +214,7 @@
              }				
     }
 	function btnGo_click(){
-             var user_input = document.getElementById("txtCommand").value;
+		var user_input = document.getElementById("txtCommand").value;
 		         if (user_input == "n"|| user_input == "N" || user_input == "north") {
 				 btnNorth_click();
 		  } else if (user_input == "s" || user_input == "S") {
@@ -233,6 +231,12 @@
              var target = document.getElementById("message");
              target.value = msg+"\n\n"+ target.value;
     } 
+	function displayinventorymsg(imessage){
+		document.getElementById("inventory").innerHTML = "\n"+imessage;
+		}
+	function scoremsg(score){
+		document.getElementById("Score").innerHTML = "Score:"+score;
+	} 	
       //       Help button		 
     function btnhlp_click() {
              alert("Please Click on the navigation button below (North, South, East, West) or type in the following letters (N,S,E,W,n,s,e,w,) to navigate your ship!!!");
