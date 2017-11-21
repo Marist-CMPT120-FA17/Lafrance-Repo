@@ -2,7 +2,7 @@
 		  
    //Global Variables 
    
-      var takeitem = true;
+      //var takeitem = true;
       var Inventory = 0;
 	  var hiddenTresure = 0;
 	  var score = 0;
@@ -35,9 +35,9 @@
 	  var Cayman = new Location(3,"Cayman","Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.",);
 	  var DomincainRepublic = new Location(4,"Domincain-Republic","",null);
 	  var Bahamas = new Location(5,"Bahamas","Welcome to Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring you shovel and watch out for the sea shells.",null);
-	  var Miami = new Location(6,"Miami","Magic Skull key" );
-	  var TurksandCaicos = new Location(7,"Turks-and-Caicos","",null);
-	  var Haiti = new Location(8,"Haiti","Welcome to Haiti.","",null);
+	  var Miami = new Location(6,"Miami","missing text","Magic Skull key" );
+	  var TurksandCaicos = new Location(7,"Turks-and-Caicos","missing text",null);
+	  var Haiti = new Location(8,"Haiti","Welcome to Haiti.","missing text",null);
 	  var Aruba = new Location(9,"Aruba","Welcome to Aruba.","Rare-pearl");
 	  var CostaRica = new Location(10,"Costa-Rica","Welcome to Costa Rica.","Golden Compass");
 
@@ -89,11 +89,35 @@
 		var name = items[hiddenTresure].desc;
 		
 		updatedisplayMessage(desc);
-		document.getElementById("inventory").innerHTML = ""+name; 
+		updatedisplayMessage(name);
 		document.getElementById("Score").innerHTML = "Score:"+score;
+		document.getElementById("inventory").innerHTML =""+name;
 		
-	}
+	// this btnitem_click() function add treatures to inventory when found
 	
+    function btnitem_click(){
+		if(hiddentTresure === 0){
+			Treasure.push(Treasurechest.name);  	
+		}else{
+			if(hiddentTresure === 1){
+				 Treasure.push(GoldenCompass.name);
+			}else{
+				if(hiddentTresure === 2){
+					Treasure.push(Magicskullkey.name); 
+				}else{
+					if(hiddentTresure ===3){
+						Treasure.push(Cubancigar.name); 
+					}else{
+						if(hiddentTresure === 4){
+						}else{
+							
+			            }
+					}
+		        }
+			}       
+	    }
+	}
+	}
   // Add locations and items  prototype
   
   // ("Treasure-chest","Rare-pearl","Golden-compass","Magic-skull-key","Cuban-cigar","")
@@ -115,9 +139,7 @@
                                  return this.id + "" + this.name + "" + this.description;
                         };
 	}
-	//function addnewtreature(){
-	//	Treasure.push(GoldenCompass.name);
-	//}
+	
   //   Debug Aid	
    
 	     console.log();
@@ -135,7 +157,6 @@
 		if (currentLoc === 0|| hiddenTresure === 0){
 			    currentLoc = 1;
 				hiddenTresure = 1;
-	     		Treasure.push(Treasurechest.name);
 			    score += 5;
 				look ();
 		}	else { 
@@ -145,7 +166,6 @@
 				   Novi_erroLoc();			   
                 }	else{
 					return score;
-					return name;
 				    }
             }				
     }
@@ -154,7 +174,6 @@
 			    currentLoc = 2;
 			    score += 5;
 				hiddenTresure = 1;
-				addnewtreature();
 				look();
 		    }else { 
                if (currentLoc === 1){
@@ -212,7 +231,7 @@
     }
 	function updatedisplayMessage(msg) {
              var target = document.getElementById("message");
-             target.value = msg +"\n\n" + target.value;
+             target.value = msg+"\n\n"+ target.value;
     } 
       //       Help button		 
     function btnhlp_click() {
