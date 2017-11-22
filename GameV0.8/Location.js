@@ -29,23 +29,23 @@
 		 
   // Locations in an array.
   
-  	  var Jamaica = new Location(0,"Jamaica","You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure.","Treasure Chest");
-	  var Cuba = new Location(1,"Cuba","Welcome to Cuba don't forget to check out Havana for some cuban cigar.","Cuban Cigar"); 
-	  var Panama = new Location(2,"Panama","Welcome to Panama City please feel free to search the City, you may be lucky to find your fortune.",);
-	  var Cayman = new Location(3,"Cayman","Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.",);
+  	  var Jamaica = new Location(0,"Jamaica","You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure. Wow! look you found a","Treasure Chest");
+	  var Cuba = new Location(1,"Cuba","Welcome to Cuba don't forget to check out Havana for some Cuban cigar. Don't smoke the whole thing at once. You just found a: click the TAKEITEAM button to retrieve item","Cuban Cigar"); 
+	  var Panama = new Location(2,"Panama","Welcome to Panama City please feel free to search the City, you may be lucky to find your fortune.",null);
+	  var Cayman = new Location(3,"Cayman","Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.",null);
 	  var DomincainRepublic = new Location(4,"Domincain-Republic","Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring you shovel and watch out for the looters.",null);
 	  var Bahamas = new Location(5,"Bahamas","Welcome to the Bahamas" ,null);
 	  var Miami = new Location(6,"Miami","welcome to Miami, would you like to update you ship","Magic Skull key" );
 	  var TurksandCaicos = new Location(7,"Turks-and-Caicos","missing text",null);
 	  var Haiti = new Location(8,"Haiti","Welcome to Haiti.","missing text",null);
-	  var Aruba = new Location(9,"Aruba","Welcome to Aruba.","Rare-pearl");
-	  var CostaRica = new Location(10,"Costa-Rica","Welcome to Costa Rica.","Golden Compass");
+	  var Aruba = new Location(9,"Aruba","Welcome to Aruba. Sweet! it looks like you just found a.","Rare-pearl");
+	  var CostaRica = new Location(10,"Costa-Rica","Welcome to Costa Rica! Get ready to navigate the seven seas.","Golden Compass");
 
-	  var Treasurechest = new Item (0,"Treasure chest","Wow! look what you found:");
-	  var Rarepearl = new Item (1,"Rare pearl","Sweet! it looks like you found a:");
-	  var Magicskullkey = new Item (2,"Magic skullkey","Awesome you just found a");
-	  var Cubancigar = new Item (3,"Cuban cigar","dont smoke the hold thing at once you just find a");
-	  var GoldenCompass = new Item(4,"Golden Compass","Wow! you ready to cruz the oction with your new");
+	  var Treasurechest = new Item (0,"Treasure chest","you found a treasure chest");
+	  var Rarepearl = new Item (1,"Rare pearl","you found a Rare pearl");
+	  var Magicskullkey = new Item (2,"Magic skull key","Awesome you just found Magic skull key");
+	  var Cubancigar = new Item (3,"Cuban cigar","you just find a Cuban cigar");
+	  var GoldenCompass = new Item(4,"Golden Compass","Wow! get ready to cruz the ocaen on the seven seas you found a Golden Compass");
     
     locations[0]= Jamaica;
 	locations[1]= Cuba;
@@ -75,6 +75,7 @@
     function init() {
                 
 	}
+	
     function look(){	
   // Debug Aid
   
