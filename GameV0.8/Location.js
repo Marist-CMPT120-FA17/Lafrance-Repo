@@ -62,12 +62,6 @@
 	 
   // Items in array 
      
-	items[0] = Treasurechest;
-	items[1] = Rarepearl;
-	items[2] = GoldenCompass;
-	items[3] = Magicskullkey;
-	items[4] = Cubancigar;
-	
 	items.push[Treasurechest, Rarepearl, GoldenCompass, Cubancigar];	
 	
   // Initialization
@@ -203,7 +197,7 @@
 			    currentLoc = 3;
 				hiddenTresure = 6
 			    score += 5;
-				look  ();
+				   look ();
 		   } else { 
                if (currentLoc === 1){
                    score += 5;
