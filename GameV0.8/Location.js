@@ -24,13 +24,12 @@
    //Add Global array for look and Inventory("Treasure")
    
       var locations =[];
-   	  var Treasure =[];
 	  var items =[];
 		 
   // Locations in an array.
   
-  	  var Jamaica = new Location(0,"Jamaica","You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure. Wow! look you found a","Treasure Chest");
-	  var Cuba = new Location(1,"Cuba","Welcome to Cuba don't forget to check out Havana for some Cuban cigar. Don't smoke the whole thing at once. You just found a: click the TAKEITEAM button to retrieve item","Cuban Cigar"); 
+  	  var Jamaica = new Location(0,"Jamaica","You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure and Wow! it looks like you found a Treasure Chest","Treasure Chest");
+	  var Cuba = new Location(1,"Cuba","Welcome to Cuba don't forget to check out Havana for some Cuban cigar. Don't smoke the whole thing at once. You just found a Cigar click the TAKEITEAM button to retrieve item.","Cuban Cigar"); 
 	  var Panama = new Location(2,"Panama","Welcome to Panama City please feel free to search the City, you may be lucky to find your fortune.",null);
 	  var Cayman = new Location(3,"Cayman","Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.",null);
 	  var DomincainRepublic = new Location(4,"Domincain-Republic","Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring you shovel and watch out for the looters.",null);
@@ -41,11 +40,11 @@
 	  var Aruba = new Location(9,"Aruba","Welcome to Aruba. Sweet! it looks like you just found a.","Rare-pearl");
 	  var CostaRica = new Location(10,"Costa-Rica","Welcome to Costa Rica! Get ready to navigate the seven seas.","Golden Compass");
 
-	  var Treasurechest = new Item (0,"Treasure chest","you found a treasure chest");
-	  var Rarepearl = new Item (1,"Rare pearl","you found a Rare pearl");
-	  var Magicskullkey = new Item (2,"Magic skull key","Awesome you just found Magic skull key");
-	  var Cubancigar = new Item (3,"Cuban cigar","you just find a Cuban cigar");
-	  var GoldenCompass = new Item(4,"Golden Compass","Wow! get ready to cruz the ocaen on the seven seas you found a Golden Compass");
+	  var Treasurechest = new Item (0,"Treasure chest","You retrieve the Treasure Chest and its empty but don’t worry there are lots of hidden treasure around these Caribbean Islands.");
+	  var Rarepearl = new Item (1,"Rare pearl","Nice! you just retrive the Rare pearl");
+	  var Magicskullkey = new Item (2,"Magic skull key","Awesome! you just retrive the Magic skull key");
+	  var Cubancigar = new Item (3,"Cuban cigar"," you just retrive a Cuban cigar");
+	  var GoldenCompass = new Item(4,"Golden Compass","you just retrive the Golden Compass");
     
     locations[0]= Jamaica;
 	locations[1]= Cuba;
@@ -58,11 +57,14 @@
 	locations[8]= Haiti; 
 	locations[9]= Aruba;      
 	locations[10]= CostaRica;
-	
 	 
   // Items in array 
      
-	items.push[Treasurechest, Rarepearl, GoldenCompass, Cubancigar];	
+	items[0] = Treasurechest;
+	items[1] = Rarepearl;
+	items[2] = GoldenCompass;
+	items[3] = Magicskullkey;
+	items[4] = Cubancigar;	
 	
   // Initialization
   
@@ -77,42 +79,17 @@
 		console.log(locations);
 		console.log(items);
 		console.log(score);
+		console.log(name);
 		console.log(locations[currentLoc]);
 		var desc = locations[currentLoc].desc;
-		var name = items[hiddenTresure].name;
+		var name = items[hiddenTresure].desc;
 		
 		updatedisplayMessage(desc);
-		displayinventorymsg(name);
 		scoremsg(score);
-	// this btnitem_click() function add treatures to inventory when found
-	
-    function btnitem_click(){
-		if(hiddentTresure === 0){
-			items.push(Treasurechest.name);  	
-		}else{
-			if(hiddentTresure === 1){
-				 items.push(GoldenCompass.name);
-			}else{
-				if(hiddentTresure === 2){
-					items.push(Magicskullkey.name); 
-				}else{
-					if(hiddentTresure === 3){
-						items.push(Cubancigar.name); 
-					}else{
-						if(hiddentTresure === 4){
-						}else{
-							return items.length;
-							updatedisplayMessage("Sorry you have to find a Treasure before you can retrive it with the TAKEITEM button" );
-			            }
-					}
-		        }
-			}       
-	    }
-	}
 	}
   // Add locations and items  prototype
   
-  // ("Treasure-chest","Rare-pearl","Golden-compass","Magic-skull-key","Cuban-cigar","")
+  // ("Treasure chest","Rare pearl","Golden compass","Magic skull key","Cuban cigar","")
   
 	function Location(id, name, desc, item) {
 		this.id = id;
@@ -131,7 +108,6 @@
                                  return this.id + "" + this.name + "" + this.description;
                         };
 	}
-	
   //   Debug Aid	
    
 	     console.log();
@@ -148,13 +124,14 @@
 	function btnNorth_click(){
 		if (currentLoc === 0|| hiddenTresure === 0){
 			    currentLoc = 1;
-				hiddenTresure = 0;
+				hiddenTresure == 0;
 			    score += 5;
 				look ();
 		}	else { 
 				if (currentLoc === 1||hiddenTresure === 1){
 			       currentLoc = 2;
 	               look();
+				   hiddenTresure == 0;
 				   Novi_erroLoc();			   
                 }	else{
 					return score;
@@ -162,7 +139,7 @@
             }				
     }
 	function btnSouth_click(){
-		if (currentLoc === 1||hiddenTresure === 1){
+		if (currentLoc === 1||hiddenTresure === 2){
 			    currentLoc = 2;
 			    score += 5;
 				hiddenTresure = 2;
@@ -178,7 +155,7 @@
              }				
      }
 	 function btnEast_click(){
-		if (currentLoc === 2||hiddenTresure === 2){
+		if (currentLoc === 2||hiddenTresure === 3){
 			    currentLoc = 4;
 			    score += 5;
 				look();
@@ -208,6 +185,32 @@
 				}
              }				
     }
+		// this btnitem_click() function add treatures to inventory when found
+	
+    function btnitem_click(){
+		if(hiddentTresure == 0){
+			items[0].push(Treasurechest.name);  	
+		}else{
+			if(hiddentTresure === 1){
+				 items[1].push(Cubancigar.name);
+			}else{
+				if(hiddentTresure === 2){
+					items[2].push(Magicskullkey.name); 
+				}else{
+					if(hiddentTresure === 3){
+						items[3].push(GoldenCompass.name); 
+					}else{
+						if(hiddentTresure === 4){
+							items[4].push(GoldenCompass.name);
+						}else{
+							return items.toString;
+							displayinventorymsg(toString);
+			            }
+					}
+		        }
+			}       
+	    }
+	} 
 	function btnGo_click(){
 		var user_input = document.getElementById("txtCommand").value;
 		         if (user_input == "n"|| user_input == "N" || user_input == "north") {
@@ -226,8 +229,8 @@
              var target = document.getElementById("message");
              target.value = msg+"\n\n"+ target.value;
     } 
-	function displayinventorymsg(imessage){
-		document.getElementById("inventory").innerHTML = "\n"+imessage;
+	function displayinventorymsg(inventorymessage){
+		document.getElementById("inventory").innerHTML = +inventorymessage;
 		}
 	function scoremsg(score){
 		document.getElementById("Score").innerHTML = "Score:"+score;
