@@ -29,7 +29,7 @@
   // Locations in an array.
   
   	  var Jamaica = new Location(0,"Jamaica","You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure and Wow! it looks like you found a Treasure Chest","Treasure Chest");
-	  var Cuba = new Location(1,"Cuba","Welcome to Cuba don't forget to check out Havana for some Cuban cigar. Don't smoke the whole thing at once. You just found a Cigar click the TAKEITEAM button to retrieve item.","Cuban Cigar"); 
+	  var Cuba = new Location(1,"Cuba","Welcome to Cuba don't forget to check out Havana for some Cuban cigar. Don't smoke the whole thing at once. You just found a Cigar Click the TAKEITEAM button to retrieve item.","Cuban Cigar"); 
 	  var Panama = new Location(2,"Panama","Welcome to Panama City please feel free to search the City, you may be lucky to find your fortune.",null);
 	  var Cayman = new Location(3,"Cayman","Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.",null);
 	  var DomincainRepublic = new Location(4,"Domincain-Republic","Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring you shovel and watch out for the looters.",null);
@@ -40,8 +40,8 @@
 	  var Aruba = new Location(9,"Aruba","Welcome to Aruba. Sweet! it looks like you just found a.","Rare-pearl");
 	  var CostaRica = new Location(10,"Costa-Rica","Welcome to Costa Rica! Get ready to navigate the seven seas.","Golden Compass");
 
-	  var Treasurechest = new Item (0,"Treasure chest","You retrieve the Treasure Chest and its empty but don’t worry there are lots of hidden treasure around these Caribbean Islands.");
-	  var Rarepearl = new Item (1,"Rare pearl","Nice! you just retrive the Rare pearl");
+	  var Treasurechest = new Item (0,"Treasure chest","You retrieve a Treasure Chest and its empty but don’t worry there are lots of hidden treasure around these Caribbean Islands.");
+	  var Rarepearl = new Item (1,"Rare pearl","Nice! you just retrive a Rare pearl");
 	  var Magicskullkey = new Item (2,"Magic skull key","Awesome! you just retrive the Magic skull key");
 	  var Cubancigar = new Item (3,"Cuban cigar"," you just retrive a Cuban cigar");
 	  var GoldenCompass = new Item(4,"Golden Compass","you just retrive the Golden Compass");
@@ -79,7 +79,8 @@
 		console.log(locations);
 		console.log(items);
 		console.log(score);
-		console.log(name);
+		console.log(hiddenTresure);
+		console.log(items.length);
 		console.log(locations[currentLoc]);
 		var desc = locations[currentLoc].desc;
 		var name = items[hiddenTresure].desc;
@@ -124,14 +125,16 @@
 	function btnNorth_click(){
 		if (currentLoc === 0|| hiddenTresure === 0){
 			    currentLoc = 1;
-				hiddenTresure == 0;
+				hiddenTresure = 0;
 			    score += 5;
-				look ();
+				items.length == 0;
+				btnitem_click();
+				look();
 		}	else { 
 				if (currentLoc === 1||hiddenTresure === 1){
 			       currentLoc = 2;
 	               look();
-				   hiddenTresure == 0;
+				   hiddenTresure = 0;
 				   Novi_erroLoc();			   
                 }	else{
 					return score;
@@ -158,6 +161,7 @@
 		if (currentLoc === 2||hiddenTresure === 3){
 			    currentLoc = 4;
 			    score += 5;
+				hiddenTresure = 2;
 				look();
 		    } else { 
                if (currentLoc === 1){
@@ -188,23 +192,23 @@
 		// this btnitem_click() function add treatures to inventory when found
 	
     function btnitem_click(){
-		if(hiddentTresure == 0){
+		if(items[0].length === 0){
 			items[0].push(Treasurechest.name);  	
 		}else{
-			if(hiddentTresure === 1){
+			if(items.length === 1){
 				 items[1].push(Cubancigar.name);
 			}else{
-				if(hiddentTresure === 2){
+				if(items.length === 2){
 					items[2].push(Magicskullkey.name); 
 				}else{
-					if(hiddentTresure === 3){
+					if(items.length === 3){
 						items[3].push(GoldenCompass.name); 
 					}else{
-						if(hiddentTresure === 4){
+						if(items.length === 4){
 							items[4].push(GoldenCompass.name);
 						}else{
-							return items.toString;
-							displayinventorymsg(toString);
+							return items.name;
+							displayinventorymsg(items.name);
 			            }
 					}
 		        }
@@ -230,7 +234,7 @@
              target.value = msg+"\n\n"+ target.value;
     } 
 	function displayinventorymsg(inventorymessage){
-		document.getElementById("inventory").innerHTML = +inventorymessage;
+		document.getElementById("inventory").innerHTML = ""+inventorymessage;
 		}
 	function scoremsg(score){
 		document.getElementById("Score").innerHTML = "Score:"+score;
