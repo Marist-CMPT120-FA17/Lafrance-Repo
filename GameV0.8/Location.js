@@ -83,8 +83,9 @@
 		console.log(hiddenTresure);
 		console.log(items.length);
 		//console.log(btnNorth_click()); game crash when this console is active in the program
-		console.log(btnitem_click());
+		console.log(btnitem_click);
 		console.log(Treasure);
+		console.log(displayinventorymsg);
 		console.log(locations[currentLoc]);
 		var desc = locations[currentLoc].desc;
 		var name = items[hiddenTresure].desc;
@@ -197,22 +198,27 @@
 	
     function btnitem_click(){
 		if(Treasure.length === 0){
-			Treasure.push(Treasurechest.name);  	
+			Treasure.push(Treasurechest.name);
+			displayinventorymsg(Treasure);       
 		}else{
 			if(Treasure.length === 1){
 				 Treasure.push(Cubancigar.name);
+				 displayinventorymsg(Treasure);
 			}else{
 				if(Treasure.length === 2){
-					Treasure.push(Magicskullkey.name); 
+					Treasure.push(Magicskullkey.name);
+					displayinventorymsg(Treasure)
 				}else{
 					if(Treasure.length === 3){
-						Treasure.push(GoldenCompass.name); 
+						Treasure.push(GoldenCompass.name);
+						displayinventorymsg(Treasure)
 					}else{
 						if(Treasure.length === 4){
 							Treasure.push(GoldenCompass.name);
+							displayinventorymsg(Treasure)
 						}else{
 							return Treasure.length;
-							displayinventorymsg(Treasure.length);
+							displayinventorymsg(Treasure);
 			            }
 					}
 		        }
@@ -238,7 +244,7 @@
              target.value = msg+"\n\n"+ target.value;
     } 
 	function displayinventorymsg(inventorymessage){
-		document.getElementById("inventory").innerHTML = ""+inventorymessage;
+		document.getElementById("inventory").innerHTML ="Inventory list:"+inventorymessage;
 		}
 	function scoremsg(score){
 		document.getElementById("Score").innerHTML = "Score:"+score;
