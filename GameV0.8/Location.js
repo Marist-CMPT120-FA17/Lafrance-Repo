@@ -21,10 +21,11 @@
       var VisitedLoc9 = false;
       var VisitedLoc10 = false;
 		 
-   //Add Global array for look and Inventory("Treasure")
+   //Add Global array for look() and Inventory("Treasure")
    
-      var locations =[];
-	  var items =[];
+      var locations = [];
+	  var items = [];
+	  var Treasure = [];
 		 
   // Locations in an array.
   
@@ -81,6 +82,9 @@
 		console.log(score);
 		console.log(hiddenTresure);
 		console.log(items.length);
+		//console.log(btnNorth_click()); game crash when this console is active in the program
+		console.log(btnitem_click());
+		console.log(Treasure);
 		console.log(locations[currentLoc]);
 		var desc = locations[currentLoc].desc;
 		var name = items[hiddenTresure].desc;
@@ -192,23 +196,23 @@
 		// this btnitem_click() function add treatures to inventory when found
 	
     function btnitem_click(){
-		if(items[0].length === 0){
-			items[0].push(Treasurechest.name);  	
+		if(Treasure.length === 0){
+			Treasure.push(Treasurechest.name);  	
 		}else{
-			if(items.length === 1){
-				 items[1].push(Cubancigar.name);
+			if(Treasure.length === 1){
+				 Treasure.push(Cubancigar.name);
 			}else{
-				if(items.length === 2){
-					items[2].push(Magicskullkey.name); 
+				if(Treasure.length === 2){
+					Treasure.push(Magicskullkey.name); 
 				}else{
-					if(items.length === 3){
-						items[3].push(GoldenCompass.name); 
+					if(Treasure.length === 3){
+						Treasure.push(GoldenCompass.name); 
 					}else{
-						if(items.length === 4){
-							items[4].push(GoldenCompass.name);
+						if(Treasure.length === 4){
+							Treasure.push(GoldenCompass.name);
 						}else{
-							return items.name;
-							displayinventorymsg(items.name);
+							return Treasure.length;
+							displayinventorymsg(Treasure.length);
 			            }
 					}
 		        }
