@@ -23,29 +23,30 @@
 		 
    //Add Global array for look() and Inventory("Treasure")
    
-      var locations = [];
-	  var items = [];
-	  var Treasure = [];
+      var locations =[];
+	  var items =[];
+	  var Treasure =[];
 		 
   // Locations in an array.
   
   	  var Jamaica = new Location(0,"Jamaica","You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure and Wow! it looks like you found a Treasure Chest","Treasure Chest");
-	  var Cuba = new Location(1,"Cuba","Welcome to Cuba don't forget to check out Havana for some Cuban cigar. Don't smoke the whole thing at once. You just found a Cigar Click the TAKEITEAM button to retrieve item.","Cuban Cigar"); 
+	  var Cuba = new Location(1,"Cuba","Welcome to Cuba don't forget to check out Havana for some Cuban cigar. Don't smoke the whole thing at once. You just found a Cigar Click on the TAKE ITEAM button to retrieve item.","Cuban Cigar"); 
 	  var Panama = new Location(2,"Panama","Welcome to Panama City please feel free to search the City, you may be lucky to find your fortune.",null);
 	  var Cayman = new Location(3,"Cayman","Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.",null);
 	  var DomincainRepublic = new Location(4,"Domincain-Republic","Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring you shovel and watch out for the looters.",null);
-	  var Bahamas = new Location(5,"Bahamas","Welcome to the Bahamas" ,null);
+	  var Bahamas = new Location(5,"Bahamas","Welcome to the Bahamas",null);
 	  var Miami = new Location(6,"Miami","welcome to Miami, would you like to update you ship","Magic Skull key" );
 	  var TurksandCaicos = new Location(7,"Turks-and-Caicos","missing text",null);
 	  var Haiti = new Location(8,"Haiti","Welcome to Haiti.","missing text",null);
 	  var Aruba = new Location(9,"Aruba","Welcome to Aruba. Sweet! it looks like you just found a.","Rare-pearl");
 	  var CostaRica = new Location(10,"Costa-Rica","Welcome to Costa Rica! Get ready to navigate the seven seas.","Golden Compass");
 
-	  var Treasurechest = new Item (0,"Treasure chest","You retrieve a Treasure Chest and its empty but don’t worry there are lots of hidden treasure around these Caribbean Islands.");
-	  var Rarepearl = new Item (1,"Rare pearl","Nice! you just retrive a Rare pearl");
-	  var Magicskullkey = new Item (2,"Magic skull key","Awesome! you just retrive the Magic skull key");
-	  var Cubancigar = new Item (3,"Cuban cigar"," you just retrive a Cuban cigar");
-	  var GoldenCompass = new Item(4,"Golden Compass","you just retrive the Golden Compass");
+	  var Treasurechest = new Item (0,"Treasure chest","You retrieve a Treasure Chest, and its empty but don’t worry there are lots of hidden treasure around these Islands!!!.");
+	  var Cubancigar = new Item (1,"Cuban cigar","You just retrive a Cuban cigar!!!");
+	  var Rarepearl = new Item (3,"Rare pearl","Nice! You just retrive a Rare pearl!!!");
+	  var Magicskullkey = new Item (2,"Magic skull key","Awesome! You just retrive the Magic skull key!!");
+	  
+	  var GoldenCompass = new Item(4,"Golden Compass","You just retrive the Golden Compass!!");
     
     locations[0]= Jamaica;
 	locations[1]= Cuba;
@@ -62,10 +63,12 @@
   // Items in array 
      
 	items[0] = Treasurechest;
-	items[1] = Rarepearl;
-	items[2] = GoldenCompass;
-	items[3] = Magicskullkey;
-	items[4] = Cubancigar;	
+	items[1] = Cubancigar;
+	items[2] = Magicskullkey;
+	items[3] = Rarepearl;
+	items[4] = GoldenCompass;
+	
+		
 	
   // Initialization
   
@@ -87,9 +90,7 @@
 		console.log(Treasure);
 		console.log(displayinventorymsg);
 		console.log(locations[currentLoc]);
-		var desc = locations[currentLoc].desc;
-		var name = items[hiddenTresure].desc;
-		
+		var desc = locations[currentLoc].desc;	
 		updatedisplayMessage(desc);
 		scoremsg(score);
 	}
@@ -103,7 +104,7 @@
 		this.desc = desc;
 		this.item = item; 
 		this.toString = function() {
-			return this.id + "" + this.name + "" + this.description + "" + this.item;
+			return this.id + "" + this.name + "" + this.desc + "" + this.item;
         };
 	}					
 	function Item(id, name, desc){
@@ -111,7 +112,7 @@
 		this.name = name;
 		this.desc = desc;
 		this.toString = function() {
-                                 return this.id + "" + this.name + "" + this.description;
+                                 return this.id + "" + this.name + "" + this.desc;
                         };
 	}
   //   Debug Aid	
@@ -130,24 +131,21 @@
 	function btnNorth_click(){
 		if (currentLoc === 0|| hiddenTresure === 0){
 			    currentLoc = 1;
-				hiddenTresure = 0;
+				hiddenTresure = 1;
 			    score += 5;
-				items.length == 0;
-				btnitem_click();
 				look();
 		}	else { 
 				if (currentLoc === 1||hiddenTresure === 1){
 			       currentLoc = 2;
 	               look();
-				   hiddenTresure = 0;
-				   Novi_erroLoc();			   
+				   hiddenTresure = null;		   
                 }	else{
 					return score;
 				    }
             }				
     }
 	function btnSouth_click(){
-		if (currentLoc === 1||hiddenTresure === 2){
+		if (currentLoc === 2||hiddenTresure === 2){
 			    currentLoc = 2;
 			    score += 5;
 				hiddenTresure = 2;
@@ -156,7 +154,6 @@
                if (currentLoc === 1){
                    score += 5;
 	               look();
-				   Novi_erroLoc();
               } else{
 	            return score;
 				}
@@ -171,8 +168,7 @@
 		    } else { 
                if (currentLoc === 1){
                    score += 5;
-				   Novi_erroLoc();
-	               look  ();
+	               look ();
                } else{
 	             return score;
 				 }
@@ -197,28 +193,34 @@
 		// this btnitem_click() function add treatures to inventory when found
 	
     function btnitem_click(){
-		if(Treasure.length === 0){
+		var name = items[hiddenTresure].desc;
+		if(hiddenTresure == 0){
 			Treasure.push(Treasurechest.name);
-			displayinventorymsg(Treasure);       
+			displayinventorymsg(Treasure);
+			updatedisplayMessage(name);
 		}else{
-			if(Treasure.length === 1){
+			if(hiddenTresure == 1){
 				 Treasure.push(Cubancigar.name);
 				 displayinventorymsg(Treasure);
+				 updatedisplayMessage(name);
 			}else{
-				if(Treasure.length === 2){
+				if(hiddenTresure == 2){
 					Treasure.push(Magicskullkey.name);
-					displayinventorymsg(Treasure)
+					displayinventorymsg(Treasure);
+					updatedisplayMessage(name);
 				}else{
-					if(Treasure.length === 3){
-						Treasure.push(GoldenCompass.name);
-						displayinventorymsg(Treasure)
+					if(hiddenTresure == 3){
+						Treasure.push(Rarepearl.name);
+						displayinventorymsg(Treasure);
+						updatedisplayMessage(name);
 					}else{
-						if(Treasure.length === 4){
+						if(hiddenTresure == 4){
 							Treasure.push(GoldenCompass.name);
-							displayinventorymsg(Treasure)
-						}else{
-							return Treasure.length;
 							displayinventorymsg(Treasure);
+							updatedisplayMessage(name);
+						}else{
+							return Treasure;
+							displayinventorymsg("Sorry there is no Treasure");
 			            }
 					}
 		        }
