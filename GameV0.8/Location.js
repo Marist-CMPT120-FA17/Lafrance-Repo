@@ -7,8 +7,15 @@
 	  var hiddenTresure = 0;
 	  var score = 0;
       var currentLoc = 0;
-      var erroLoc = 0;
-	 
+	  
+	 // location matrix
+	 var nav = [// N S E W
+         /*0*/	  [1,2,8,4 ],
+		 /*1*/    [5,0,7,-1],
+		 /*2*/    [],
+		 /*3*/    [],
+		 /*4*/    [],
+                         ] ;	
 	  var VisitedLoc0 = false;
       var VisitedLoc1 = false;
       var VisitedLoc2 = false;
@@ -20,6 +27,10 @@
       var VisitedLoc8 = false;
       var VisitedLoc9 = false;
       var VisitedLoc10 = false;
+	  
+			
+					
+	  
 		 
    //Add Global array for look() and Inventory("Treasure")
    
@@ -29,8 +40,8 @@
 		 
   // Locations in an array.
   
-  	  var Jamaica = new Location(0,"Jamaica","You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure and Wow! it looks like you found a Treasure Chest","Treasure Chest");
-	  var Cuba = new Location(1,"Cuba","Welcome to Cuba don't forget to check out Havana for some Cuban cigar. Don't smoke the whole thing at once. You just found a Cigar Click on the TAKE ITEAM button to retrieve item.","Cuban Cigar"); 
+  	  var Jamaica = new Location(0,"Jamaica","You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure and Wow! it looks like you found a Treasure Chest. Click on the TAKE ITEAM button to retrieve item. ","Treasure Chest");
+	  var Cuba = new Location(1,"Cuba","Welcome to Cuba don't forget to check out Havana for some Cuban cigar. Don't smoke the whole thing at once. You just found a Cigar.","Cuban Cigar"); 
 	  var Panama = new Location(2,"Panama","Welcome to Panama City please feel free to search the City, you may be lucky to find your fortune.",null);
 	  var Cayman = new Location(3,"Cayman","Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.",null);
 	  var DomincainRepublic = new Location(4,"Domincain-Republic","Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring you shovel and watch out for the looters.",null);
@@ -73,7 +84,8 @@
   // Initialization
   
     function init() {
-                
+      var desc = locations[currentLoc].desc;	
+     	  updatedisplayMessage(desc);
 	}
 	
     function look(){	
@@ -119,39 +131,31 @@
    
 	     console.log();
 		 
-	function Novi_erroLoc() {
-		erroLoc = erroLoc + 1;
-			if (erroLoc >= 1){
-			updatedisplayMessage("Sorry You cannot go that way");
-	        }
-	}
-
+	         function nextLoc(dir) {
+            var newLoc = nav[currentLoc][dir];
+            if (newLoc >= 0) {
+               currentLoc = newLoc;
+            } else {
+               displayMessage("You cannot go that way.");
+            }            
+         }
   //    Event handler for each button for North, South, East, West BUG needs******* to be remove******
   
 	function btnNorth_click(){
-		if (currentLoc === 0|| hiddenTresure === 0){
-			    currentLoc = 1;
+	            nextLoc(0);
 				hiddenTresure = 1;
 			    score += 5;
-				look();
-		}	else { 
-				if (currentLoc === 1||hiddenTresure === 1){
-			       currentLoc = 2;
-	               look();
-				   hiddenTresure = null;		   
-                }	else{
-					return score;
-				    }
-            }				
+				look();			
     }
 	function btnSouth_click(){
-		if (currentLoc === 2||hiddenTresure === 2){
+		if (currentLoc === 2){
 			    currentLoc = 2;
 			    score += 5;
 				hiddenTresure = 2;
 				look();
 		    }else { 
                if (currentLoc === 1){
+			   currentLoc = 0;
                    score += 5;
 	               look();
               } else{
