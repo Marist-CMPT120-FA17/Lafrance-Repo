@@ -2,7 +2,7 @@
 		  
    //Global Variables 
    
-      //var takeitem = true;
+      // var takeitem = true;
       var Inventory = 0;
 	  var hiddenTresure = 0;
 	  var score = 0;
@@ -12,9 +12,15 @@
 	 var nav = [// N S E W
          /*0*/	  [1,2,8,4 ],
 		 /*1*/    [5,0,7,-1],
-		 /*2*/    [],
-		 /*3*/    [],
-		 /*4*/    [],
+		 /*2*/    [0,-1,10,9],
+		 /*3*/    [1,10,8,-1],
+		 /*4*/    [7,9,-1,8],
+		 /*5*/    [-1,1,7,6], 
+		 /*6*/    [-1,-1,5,-1], 
+		 /*7*/    [-1,4,-1,-1], 
+		 /*8*/    [7,9,4,0], 
+		 /*9*/    [4,-1,2,-1], 
+		 /*10*/   [3,-1,2,-1],
                          ] ;	
 	  var VisitedLoc0 = false;
       var VisitedLoc1 = false;
@@ -41,7 +47,7 @@
   // Locations in an array.
   
   	  var Jamaica = new Location(0,"Jamaica","You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure and Wow! it looks like you found a Treasure Chest. Click on the TAKE ITEAM button to retrieve item. ","Treasure Chest");
-	  var Cuba = new Location(1,"Cuba","Welcome to Cuba don't forget to check out Havana for some Cuban cigar. Don't smoke the whole thing at once. You just found a Cigar.","Cuban Cigar"); 
+	  var Cuba = new Location(1,"Cuba","Welcome to Cuba don't forget to check out Havana for some Cuban cigar. Ohh! look You just found a Cigar. Don't smoke the whole thing at once. ","Cuban Cigar"); 
 	  var Panama = new Location(2,"Panama","Welcome to Panama City please feel free to search the City, you may be lucky to find your fortune.",null);
 	  var Cayman = new Location(3,"Cayman","Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.",null);
 	  var DomincainRepublic = new Location(4,"Domincain-Republic","Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring you shovel and watch out for the looters.",null);
@@ -52,10 +58,10 @@
 	  var Aruba = new Location(9,"Aruba","Welcome to Aruba. Sweet! it looks like you just found a.","Rare-pearl");
 	  var CostaRica = new Location(10,"Costa-Rica","Welcome to Costa Rica! Get ready to navigate the seven seas.","Golden Compass");
 
-	  var Treasurechest = new Item (0,"Treasure chest","You retrieve a Treasure Chest, and its empty but don’t worry there are lots of hidden treasure around these Islands!!!.");
-	  var Cubancigar = new Item (1,"Cuban cigar","You just retrive a Cuban cigar!!!");
-	  var Rarepearl = new Item (3,"Rare pearl","Nice! You just retrive a Rare pearl!!!");
-	  var Magicskullkey = new Item (2,"Magic skull key","Awesome! You just retrive the Magic skull key!!");
+	  var Treasurechest = new Item (0,"Treasure chest","You retrieved a Treasure Chest, and its empty but don’t worry there are lots of hidden treasure around these Islands. Please Click on the navigation button below (North, South, East, West) or type in the following letters (N,S,E,W,n,s,e,w,) to navigate your ship!!!");
+	  var Cubancigar = new Item (1,"Cuban cigar","You just retrived a Cuban cigar!!!");
+	  var Rarepearl = new Item (3,"Rare pearl","Nice! You just retrived a Rare pearl!!!");
+	  var Magicskullkey = new Item (2,"Magic skull key","Awesome! You just retrived the Magic Skull key!!");
 	  
 	  var GoldenCompass = new Item(4,"Golden Compass","You just retrive the Golden Compass!!");
     
@@ -106,10 +112,9 @@
 		updatedisplayMessage(desc);
 		scoremsg(score);
 	}
-  // Add locations and items  prototype
-  
-  // ("Treasure chest","Rare pearl","Golden compass","Magic skull key","Cuban cigar","")
-  
+	
+  // Add locations and items prototype
+ 
 	function Location(id, name, desc, item) {
 		this.id = id;
 		this.name = name;
@@ -136,67 +141,38 @@
             if (newLoc >= 0) {
                currentLoc = newLoc;
             } else {
-               displayMessage("You cannot go that way.");
+               updatedisplayMessage("You cannot go that way.");
             }            
          }
-  //    Event handler for each button for North, South, East, West BUG needs******* to be remove******
+  //    Event handler for each button for North, South, East, West.
   
-	function btnNorth_click(){
-	            nextLoc(0);
-				hiddenTresure = 1;
-			    score += 5;
-				look();			
+	 function btnNorth_click(){
+	          nextLoc(0);
+		      hiddenTresure = 1;
+			  score += 5;
+			  look();			
     }
-	function btnSouth_click(){
-		if (currentLoc === 2){
-			    currentLoc = 2;
-			    score += 5;
-				hiddenTresure = 2;
-				look();
-		    }else { 
-               if (currentLoc === 1){
-			   currentLoc = 0;
-                   score += 5;
-	               look();
-              } else{
-	            return score;
-				}
-             }				
+	 function btnSouth_click(){
+              nextLoc(0);
+			  hiddenTresure = 2;
+			  score += 5;
+			  look();
+            				
      }
 	 function btnEast_click(){
-		if (currentLoc === 2||hiddenTresure === 3){
-			    currentLoc = 4;
-			    score += 5;
-				hiddenTresure = 2;
-				look();
-		    } else { 
-               if (currentLoc === 1){
-                   score += 5;
-	               look ();
-               } else{
-	             return score;
-				 }
-               }				
-     } 
-	function btnWest_click(){
-		if (currentLoc === 4||hiddenTresure === 4){
-			    currentLoc = 3;
-				hiddenTresure = 6
-			    score += 5;
-				   look ();
-		   } else { 
-               if (currentLoc === 1){
-                   score += 5;
-	               look();
-				   Novi_erroLoc();
-              } else{
-	            return score;
-				}
-             }				
-    }
+		      nextLoc(0);
+			  hiddenTresure = 2;
+			  look();
+	 }
+	 function btnWest_click(){
+		      nextLoc(0);
+		      hiddenTresure = 6
+			  score += 5;
+			  look();
+      }
 		// this btnitem_click() function add treatures to inventory when found
 	
-    function btnitem_click(){
+      function btnitem_click(){
 		var name = items[hiddenTresure].desc;
 		if(hiddenTresure == 0){
 			Treasure.push(Treasurechest.name);
