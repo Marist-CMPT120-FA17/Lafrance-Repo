@@ -2,10 +2,8 @@
 		  
   // Global Variables 
    
-  // var takeitem = true;
-  
-	  var score = 0;
-      var currentLoc = 0;
+	 var score = 0;
+     var currentLoc = 0;
 	  
   // locations Matrix
 	 
@@ -53,7 +51,7 @@
 	  var Panama = new Location(2,"Panama","Welcome to Panama City please feel free to search the City, you may be lucky to find your fortune.",null);
 	  var Cayman = new Location(3,"Cayman","Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.",null);
 	  var DomincainRepublic = new Location(4,"Domincain-Republic","Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring you shovel and watch out for the looters!.",null);
-	  var Bahamas = new Location(5,"Bahamas","Welcome to the Bahamas, I hope you get to check out the blue Lagoon island and say hello to the dolphins",null);
+	  var Bahamas = new Location(5,"Bahamas","Welcome to the Bahamas, I hope you get to check out the blue Lagoon island and say hello to the dolphins.",null);
 	  var Miami = new Location(6,"Miami","welcome to Miami, please visted the ship yard in south Miami if you would like to upgrade your ship!.Oh! it look like your found something. Please Click on the TAKE ITEM button to retrieve item.",MagicSkullkey );
 	  var TurksandCaicos = new Location(7,"Turks-and-Caicos","Don't forget to check out the the Grand Truk lighthouse there are tails of buried treasure around here that area",null);
 	  var Haiti = new Location(8,"Haiti","Welcome to Haiti.","missing text",null);
@@ -153,21 +151,19 @@
 		if(locations[currentLoc].item !=null ){
 			Treasure.push(locations[currentLoc].item);
 			locations[currentLoc].item = null;
-			inventory(); 
+			inventory();
+			
 		  }
 	  } 
-	  
 	function inventory(){
 		document.getElementById("inventory").innerHTML ="Inventory list:\n"
 		 var i;
 		 for( i = 0; i<Treasure.length; i++) {
 			 document.getElementById("inventory").innerHTML += Treasure[i].name+"\n";
-			 
+			  updatedisplayMessage(Treasure[i].desc+"\n");
 		 }
 	 
-	}
-	  
-	  
+	}  
 	function btnGo_click(){
 		var user_input = document.getElementById("txtCommand").value;
 		         if (user_input == "n"|| user_input == "N" || user_input == "north") {
