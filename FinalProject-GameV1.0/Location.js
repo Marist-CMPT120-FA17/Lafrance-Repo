@@ -19,7 +19,7 @@
 		 /*7*/    [-1, 4, -1,1], 
 		 /*8*/    [7, 9, 4, 0], 
 		 /*9*/    [4, -1, 2, -1], 
-		 /*10*/   [3, -1, -1, 2],
+		 /*10*/   [3, -1, 2, -1],
                 ];	
 	  var VisitedLoc0 = false;
       var VisitedLoc1 = false;
@@ -106,7 +106,7 @@
 		this.item = item;
 		this.maps = maps; 
 		this.toString = function() {
-			return this.id + "" + this.name + "" + this.desc + "" + this.item;
+			return this.id + "" + this.name + "" + this.desc + "" + this.item + "" + this.maps;
         };
 	}					
 	function Item(id, name, desc){
