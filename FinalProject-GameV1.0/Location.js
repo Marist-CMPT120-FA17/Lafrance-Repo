@@ -37,9 +37,9 @@
    
       var locations =[];
 	  var Treasure =[];
-	  //var Monsters[];
+	  var Monsters =[];
 	  
-	  var TreasureChest = new Item (0,"Treasure chest","You retrieved a Treasure Chest, and it's empty but don’t worry there are lots of hidden treasure around these islands. Please click on the navigation button below (North, South, East, West) or type in the following letters (N,S,E,W,n,s,e,w,) to navigate your ship!!!");
+	  var TreasureChest = new Item (0,"Treasure chest","You retrieved a Treasure Chest, and it's empty but don’t worry there are lots of hidden treasure around these islands, but beware of sea monsters lurking in the Ocean. legend has it that they like to sink ships like yours be careful. Please click on the navigation button below (North, South, East, West) or type in the following letters (N,S,E,W,n,s,e,w,) to navigate your ship!!!");
 	  var CubanCigar = new Item (1,"Cuban cigar","You just retrieved a Cuban cigar!!!");
 	  var Rarepearl = new Item (3,"Rare pearl","Nice! You just retrieved a Rare pearl!!!");
 	  var MagicSkullkey = new Item (2,"Magic skull key","Awesome! You just retrieved the Magic Skull key!!");
@@ -59,7 +59,10 @@
 	  var Aruba = new Location(9,"Aruba","Welcome to Aruba. Sweet! It looks like you just found a pearl. Click on the TAKE ITEM button to retrieve item.",Rarepearl,"CTHGamemapLoc9.gif");
 	  var CostaRica = new Location(10,"Costa-Rica","Welcome to Costa Rica! Get ready to navigate the seven seas. Please Click on the TAKE ITEM button to retrieve item.",GoldenCompass,"CTHGamemapLoc10.gif");
 	  
-  // Monsters 
+  // legendary Sea Monsters.
+  
+      var GaintSquid = new SeaMonster(1,"Oh no!!! your ship is being atteck by the legender gaint squide",);
+	  var GaintShark = new SeaMonster(1,"Oh no!!! your ship is being atteck by a Gaint shark",); 
   
     locations[0]= Jamaica;
 	locations[1]= Cuba;
@@ -91,7 +94,6 @@
 		//console.log(btnNorth_click()); //game crash when this console is active in the program
 		console.log(btnitem_click);
 		console.log(Treasure);
-		console.log(displayinventorymsg);
 		console.log(locations[currentLoc]);
 		var desc = locations[currentLoc].desc;	
 		updatedisplayMessage(desc);
@@ -119,21 +121,37 @@
                                  return this.id + "" + this.name + "" + this.desc;
                         };
 	}
-    function SeaMonsters(id, name, desc, item){
+    function SeaMonster(id, name, desc, item){
 		this.name = name;
 		this.desc = desc;
 		this.item = item;
 		this.toString = function() {
-			return this.id + "" + this.name + "" + this.desc + "" + this.item;
+			return this.id + "" + this.name + "" + this.desc;
         };
 	 }
-  //  This function works with the navigation Matrix and add score by 5 points. 
+  // score and monster trigger function
   
+	 function hiddenMonsters(){
+		var MonsterI = 0;
+		var MonsterII = 0; 
+		if(currentLoc == 2){
+			MonsterI +=1;
+			return MonsterI;
+			console.log(MonsterI);
+		}else if( currentLoc == 9){
+			MonsterII +=1;
+			return MonsterII;
+			console.log(MonsterII);
+		}
+	 }
+  //  This function works with the navigation Matrix and add score by 5 points. 
+     
 	function nextLoc(dir) {
 		var newLoc = nav[currentLoc][dir];
         if (newLoc >= 0) {
             currentLoc = newLoc;
 		    score +=5;
+			hiddenMonsters();
             } else {
                updatedisplayMessage("You cannot go that way.");
             }            
@@ -203,9 +221,6 @@
 			 
              target.value = msg+"\n\n"+ target.value;
     } 
-	function displayinventorymsg(inventorymessage){
-		+inventorymessage;
-		}
 	function scoremsg(score){
 		document.getElementById("Score").innerHTML = "Score:"+score;
 	} 	
