@@ -4,6 +4,8 @@
    
 	 var score = 0;
      var currentLoc = 0;
+	 var MonsterI = 0;
+	 var MonsterII = 0; 
 	  
   // locations Matrix
 	 
@@ -49,14 +51,14 @@
   
   	  var Jamaica = new Location(0,"Jamaica","You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure. Wow! It looks like you found a Treasure Chest. Click on the TAKE ITEM button to retrieve item.",TreasureChest,"CTHGamemapLoc0.gif");
 	  var Cuba = new Location(1,"Cuba","Welcome to Cuba don't forget to check out Havana for some Cuban cigar. Ohh! Look you just found a cigar. Don't smoke the whole thing at once.",CubanCigar,"CTHGamemapLoc1.gif"); 
-	  var Panama = new Location(2,"Panama","Welcome to Panama City please feel free to search the city, you may be lucky to find your fortune.",null,"CTHGamemapLoc2.gif");
+	  var Panama = new Location(2,"Panama","Welcome to Panama City please feel free to search the city, you may be lucky to find your fortune.",null,"CTHGamemapLoc2.gif",GaintShark,);
 	  var Cayman = new Location(3,"Cayman","Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.",null,"CTHGamemapLoc3.gif");
 	  var DomincainRepublic = new Location(4,"Domincain-Republic","Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring your shovel and watch out for the looters!.",null,"CTHGamemapLoc4.gif");
 	  var Bahamas = new Location(5,"Bahamas","Welcome to the Bahamas, I hope you get to check out the blue Lagoon Island and say hello to the dolphins.",null,"CTHGamemapLoc5.gif");
 	  var Miami = new Location(6,"Miami","Welcome to Miami, please visit the ship yard in south Miami if you would like to upgrade your ship! Oh! It looks like you found something. Please click on the TAKE ITEM button to retrieve item.",MagicSkullkey,"CTHGamemapLoc6.gif" );
 	  var TurksandCaicos = new Location(7,"Turks-and-Caicos","Don't forget to check out the the Grand Turk lighthouse there are tails of buried treasure around here that area",null,"CTHGamemapLoc7.gif");
 	  var Haiti = new Location(8,"Haiti","Welcome to Haiti. You may or may not find a hidden treasure here",null,"CTHGamemapLoc8.gif");
-	  var Aruba = new Location(9,"Aruba","Welcome to Aruba. Sweet! It looks like you just found a pearl. Click on the TAKE ITEM button to retrieve item.",Rarepearl,"CTHGamemapLoc9.gif");
+	  var Aruba = new Location(9,"Aruba","Welcome to Aruba. Sweet! It looks like you just found a pearl. Click on the TAKE ITEM button to retrieve item.",Rarepearl,"CTHGamemapLoc9.gif",GaintSquid);
 	  var CostaRica = new Location(10,"Costa-Rica","Welcome to Costa Rica! Get ready to navigate the seven seas. Please Click on the TAKE ITEM button to retrieve item.",GoldenCompass,"CTHGamemapLoc10.gif");
 	  
   // legendary Sea Monsters.
@@ -103,14 +105,15 @@
 	
   // Add locations,items, and Monsters prototype
  
-	function Location(id, name, desc, item, maps) {
+	function Location(id, name, desc, item, maps, monster) {
 		this.id = id;
 		this.name = name;
 		this.desc = desc;
 		this.item = item;
 		this.maps = maps; 
+		this.monster = monster;
 		this.toString = function() {
-			return this.id + "" + this.name + "" + this.desc + "" + this.item + "" + this.maps;
+			return this.id + "" + this.name + "" + this.desc + "" + this.item + "" + this.maps + "" + this.monster;
         };
 	}					
 	function Item(id, name, desc){
@@ -132,16 +135,14 @@
   // score and monster trigger function
   
 	 function hiddenMonsters(){
-		var MonsterI = 0;
-		var MonsterII = 0; 
 		if(currentLoc == 2){
 			MonsterI +=1;
-			return MonsterI;
 			console.log(MonsterI);
+			return MonsterI;
 		}else if( currentLoc == 9){
 			MonsterII +=1;
-			return MonsterII;
 			console.log(MonsterII);
+			return MonsterII;
 		}
 	 }
   //  This function works with the navigation Matrix and add score by 5 points. 
@@ -150,8 +151,8 @@
 		var newLoc = nav[currentLoc][dir];
         if (newLoc >= 0) {
             currentLoc = newLoc;
-		    score +=5;
 			hiddenMonsters();
+			score +=5;
             } else {
                updatedisplayMessage("You cannot go that way.");
             }            
