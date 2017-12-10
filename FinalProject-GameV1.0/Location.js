@@ -5,7 +5,8 @@
 	 var score = 0;
      var currentLoc = 0;
 	 var MonsterI = 0;
-	 var MonsterII = 0; 
+	 var MonsterII = 0;
+     var Win = true;	 
 	  
   // locations Matrix
 	 
@@ -46,24 +47,25 @@
 	  var Rarepearl = new Item (3,"Rare pearl","Nice! You just retrieved a Rare pearl!!!");
 	  var MagicSkullkey = new Item (2,"Magic skull key","Awesome! You just retrieved the Magic Skull key!!");
 	  var GoldenCompass = new Item(4,"Golden Compass","You just retrieved the Golden Compass!!");
-		 
+	  var TheSpearofPoseidon = new Item(5,"The Spare of Poseiden","You retrived the spare of Poseiden; you can probibily use this as a weapon to defeat any sea monsters"); 
+	  
   // Locations in an array.
   
-  	  var Jamaica = new Location(0,"Jamaica","You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure. Wow! It looks like you found a Treasure Chest. Click on the TAKE ITEM button to retrieve item.",TreasureChest,"CTHGamemapLoc0.gif");
-	  var Cuba = new Location(1,"Cuba","Welcome to Cuba don't forget to check out Havana for some Cuban cigar. Ohh! Look you just found a cigar. Don't smoke the whole thing at once.",CubanCigar,"CTHGamemapLoc1.gif"); 
-	  var Panama = new Location(2,"Panama","Welcome to Panama City please feel free to search the city, you may be lucky to find your fortune.",null,"CTHGamemapLoc2.gif",GaintShark,);
-	  var Cayman = new Location(3,"Cayman","Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.",null,"CTHGamemapLoc3.gif");
-	  var DomincainRepublic = new Location(4,"Domincain-Republic","Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring your shovel and watch out for the looters!.",null,"CTHGamemapLoc4.gif");
+  	  var Jamaica = new Location(0,"Jamaica","You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure. Wow! It looks like you found a Treasure Chest. Click on the TAKE ITEM button to retrieve item.",TreasureChest,"CTHGamemapLoc0.gif",null);
+	  var Cuba = new Location(1,"Cuba","Welcome to Cuba don't forget to check out Havana for some Cuban cigar. Ohh! Look you just found a cigar. Don't smoke the whole thing at once.",CubanCigar,"CTHGamemapLoc1.gif",null); 
+	  var Panama = new Location(2,"Panama","Welcome to Panama City please feel free to search the city, you may be lucky to find your fortune.",null,"CTHGamemapLoc2.gif",GaintShark,null);
+	  var Cayman = new Location(3,"Cayman","Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.",null,"CTHGamemapLoc3.gif",null);
+	  var DomincainRepublic = new Location(4,"Domincain Republic","Welcome to Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring your shovel and watch out for the looters!.",null,"CTHGamemapLoc4.gif",null);
 	  var Bahamas = new Location(5,"Bahamas","Welcome to the Bahamas, I hope you get to check out the blue Lagoon Island and say hello to the dolphins.",null,"CTHGamemapLoc5.gif");
-	  var Miami = new Location(6,"Miami","Welcome to Miami, please visit the ship yard in south Miami if you would like to upgrade your ship! Oh! It looks like you found something. Please click on the TAKE ITEM button to retrieve item.",MagicSkullkey,"CTHGamemapLoc6.gif" );
-	  var TurksandCaicos = new Location(7,"Turks-and-Caicos","Don't forget to check out the the Grand Turk lighthouse there are tails of buried treasure around here that area",null,"CTHGamemapLoc7.gif");
-	  var Haiti = new Location(8,"Haiti","Welcome to Haiti. You may or may not find a hidden treasure here",null,"CTHGamemapLoc8.gif");
-	  var Aruba = new Location(9,"Aruba","Welcome to Aruba. Sweet! It looks like you just found a pearl. Click on the TAKE ITEM button to retrieve item.",Rarepearl,"CTHGamemapLoc9.gif",GaintSquid);
-	  var CostaRica = new Location(10,"Costa-Rica","Welcome to Costa Rica! Get ready to navigate the seven seas. Please Click on the TAKE ITEM button to retrieve item.",GoldenCompass,"CTHGamemapLoc10.gif");
+	  var Miami = new Location(6,"Miami","Welcome to Miami, please visit the ship yard in south Miami if you would like to upgrade your ship! Oh! It looks like you found something. Please click on the TAKE ITEM button to retrieve item.",MagicSkullkey,"CTHGamemapLoc6.gif",null);
+	  var TurksandCaicos = new Location(7,"Turks and Caicos","Welcome to Turks and Caicos, don't forget to check out  the Grand Turk lighthouse there are tails of buried treasure by the OLD GODS around this area",TheSpearofPoseidon,"CTHGamemapLoc7.gif",null);
+	  var Haiti = new Location(8,"Haiti","Welcome to Haiti. You may or may not find a hidden treasure here",null,"CTHGamemapLoc8.gif",null);
+	  var Aruba = new Location(9,"Aruba","Welcome to Aruba. Sweet! It looks like you just found a pearl. Click on the TAKE ITEM button to retrieve item.",Rarepearl,"CTHGamemapLoc9.gif",GaintSquid,null);
+	  var CostaRica = new Location(10,"Costa Rica","Welcome to Costa Rica! Get ready to navigate the seven seas. Please Click on the TAKE ITEM button to retrieve item.",GoldenCompass,"CTHGamemapLoc10.gif",null);
 	  
   // legendary Sea Monsters.
   
-      var GaintSquid = new SeaMonster(1,"Oh no!!! your ship is being atteck by the legender gaint squide",);
+      var GaintSquid = new SeaMonster(1,"Oh no!!! your ship is being atteck by the legender Gaint Squide",);
 	  var GaintShark = new SeaMonster(1,"Oh no!!! your ship is being atteck by a Gaint shark",); 
   
     locations[0]= Jamaica;
@@ -92,7 +94,6 @@
 		console.log(currentLoc);
 		console.log(locations);
 		console.log(score);
-		//console.log(item.length);
 		//console.log(btnNorth_click()); //game crash when this console is active in the program
 		console.log(btnitem_click);
 		console.log(Treasure);
@@ -124,14 +125,14 @@
                                  return this.id + "" + this.name + "" + this.desc;
                         };
 	}
-    function SeaMonster(id, name, desc, item){
+    function SeaMonster(id, name, desc){
 		this.name = name;
 		this.desc = desc;
-		this.item = item;
 		this.toString = function() {
 			return this.id + "" + this.name + "" + this.desc;
         };
 	 }
+	 
   // score and monster trigger function
   
 	 function hiddenMonsters(){
@@ -145,6 +146,7 @@
 			return MonsterII;
 		}
 	 }
+	 
   //  This function works with the navigation Matrix and add score by 5 points. 
      
 	function nextLoc(dir) {
@@ -153,7 +155,7 @@
             currentLoc = newLoc;
 			hiddenMonsters();
 			score +=5;
-            } else {
+            }else{
                updatedisplayMessage("You cannot go that way.");
             }            
          }
@@ -180,11 +182,12 @@
     function btnitem_click(){
 		if(locations[currentLoc].item !=null ){
 			Treasure.push(locations[currentLoc].item);
-			locations[currentLoc].item = null;
 			inventory();
-			
-		  }
-	  } 
+			locations[currentLoc].item = null;
+			}else if(locations[currentLoc].item == null){
+			updatedisplayMessage("Sorry there is no item to take.");	
+	    }
+    }	  
 	function inventory(){
 		document.getElementById("inventory").innerHTML ="Inventory list:\n"
 		 var i;
@@ -218,8 +221,6 @@
 			 var maps = document.getElementById("maps");
 			 maps.src = locations[currentLoc].maps;
 			 console.log(maps);
-			 
-			 
              target.value = msg+"\n\n"+ target.value;
     } 
 	function scoremsg(score){
