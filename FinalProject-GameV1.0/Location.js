@@ -8,7 +8,7 @@
 	 var MonsterII = 0;
      var Win = true;	 
 	  
-  // locations Matrix
+  // locations matrix
 	 
 	 var nav = [// N  S  E  W
 	 
@@ -18,7 +18,7 @@
 		 /*3*/    [1, 10, 8, -1],
 		 /*4*/    [7, 9, -1, 8],
 		 /*5*/    [-1, 1, 7, 6], 
-		 /*6*/    [-1, -1, 5, -1], 
+		 /*6*/    [-1, 1, 5, -1], 
 		 /*7*/    [-1, 4, -1,1], 
 		 /*8*/    [7, 9, 4, 0], 
 		 /*9*/    [4, -1, -1, 2], 
@@ -42,31 +42,31 @@
 	  var Treasure =[];
 	  var Monsters =[];
 	  
-	  var TreasureChest = new Item (0,"Treasure chest","You retrieved a Treasure Chest, and it's empty but don’t worry there are lots of hidden treasure around these islands, but beware of sea monsters lurking in the Ocean. legend has it that they like to sink ships like yours be careful. Please click on the navigation button below (North, South, East, West) or type in the following letters (N,S,E,W,n,s,e,w,) to navigate your ship!!!");
-	  var CubanCigar = new Item (1,"Cuban cigar","You just retrieved a Cuban cigar!!!");
-	  var Rarepearl = new Item (3,"Rare pearl","Nice! You just retrieved a Rare pearl!!!");
-	  var MagicSkullkey = new Item (2,"Magic skull key","Awesome! You just retrieved the Magic Skull key!!");
-	  var GoldenCompass = new Item(4,"Golden Compass","You just retrieved the Golden Compass!!");
-	  var TheSpearofPoseidon = new Item(5,"The Spare of Poseiden","You retrived the spare of Poseiden; you can probibily use this as a weapon to defeat any sea monsters"); 
+	  var TreasureChest = new Item (0,"Treasure chest,","You retrieved a Treasure Chest, and it's empty but don’t worry there are lots of hidden treasure around these islands, but beware of sea monsters lurking in the Ocean. legend has it that they like to sink ships like yours be careful. Please click on the navigation button below (North, South, East, West) or type in the following letters (N,S,E,W,n,s,e,w,) to navigate your ship!!!");
+	  var CubanCigar = new Item (1,"Cuban cigar,","You just retrieved a Cuban cigar!!!");
+	  var Rarepearl = new Item (3,"Rare pearl,","Nice! You just retrieved a Rare pearl!!!");
+	  var MagicSkullkey = new Item (2,"Magic skull key,","Awesome! You just retrieved the Magic Skull key!!");
+	  var GoldenCompass = new Item(4,"Golden Compass,","You just retrieved the Golden Compass!!");
+	  var TheSpearofPoseidon = new Item(5,"The Spear of Poseidon,","You retrived the spare of Poseidon; you can probibily use this as a weapon to defeat any sea monsters"); 
 	  
   // Locations in an array.
   
   	  var Jamaica = new Location(0,"Jamaica","You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure. Wow! It looks like you found a Treasure Chest. Click on the TAKE ITEM button to retrieve item.",TreasureChest,"CTHGamemapLoc0.gif",null);
 	  var Cuba = new Location(1,"Cuba","Welcome to Cuba don't forget to check out Havana for some Cuban cigar. Ohh! Look you just found a cigar. Don't smoke the whole thing at once.",CubanCigar,"CTHGamemapLoc1.gif",null); 
-	  var Panama = new Location(2,"Panama","Welcome to Panama City please feel free to search the city, you may be lucky to find your fortune.",null,"CTHGamemapLoc2.gif",GaintShark,null);
+	  var Panama = new Location(2,"Panama","Welcome to Panama City please feel free to search the city, you may be lucky to find your fortune.",null,"CTHGamemapLoc2.gif",GaintShark);
 	  var Cayman = new Location(3,"Cayman","Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.",null,"CTHGamemapLoc3.gif",null);
 	  var DomincainRepublic = new Location(4,"Domincain Republic","Welcome to Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring your shovel and watch out for the looters!.",null,"CTHGamemapLoc4.gif",null);
 	  var Bahamas = new Location(5,"Bahamas","Welcome to the Bahamas, I hope you get to check out the blue Lagoon Island and say hello to the dolphins.",null,"CTHGamemapLoc5.gif");
 	  var Miami = new Location(6,"Miami","Welcome to Miami, please visit the ship yard in south Miami if you would like to upgrade your ship! Oh! It looks like you found something. Please click on the TAKE ITEM button to retrieve item.",MagicSkullkey,"CTHGamemapLoc6.gif",null);
 	  var TurksandCaicos = new Location(7,"Turks and Caicos","Welcome to Turks and Caicos, don't forget to check out  the Grand Turk lighthouse there are tails of buried treasure by the OLD GODS around this area",TheSpearofPoseidon,"CTHGamemapLoc7.gif",null);
 	  var Haiti = new Location(8,"Haiti","Welcome to Haiti. You may or may not find a hidden treasure here",null,"CTHGamemapLoc8.gif",null);
-	  var Aruba = new Location(9,"Aruba","Welcome to Aruba. Sweet! It looks like you just found a pearl. Click on the TAKE ITEM button to retrieve item.",Rarepearl,"CTHGamemapLoc9.gif",GaintSquid,null);
+	  var Aruba = new Location(9,"Aruba","Welcome to Aruba. Sweet! It looks like you just found a pearl. Click on the TAKE ITEM button to retrieve item.",Rarepearl,"CTHGamemapLoc9.gif",GaintSquid);
 	  var CostaRica = new Location(10,"Costa Rica","Welcome to Costa Rica! Get ready to navigate the seven seas. Please Click on the TAKE ITEM button to retrieve item.",GoldenCompass,"CTHGamemapLoc10.gif",null);
 	  
-  // legendary Sea Monsters.
+  // Sea Monsters.
   
-      var GaintSquid = new SeaMonster(1,"Oh no!!! your ship is being atteck by the legender Gaint Squide",);
-	  var GaintShark = new SeaMonster(1,"Oh no!!! your ship is being atteck by a Gaint shark",); 
+      var GaintSquid = new SeaMonster(1,"Gaint Squid","Oh no!!! your ship is being atteck by the legender Gaint Squide",);
+	  var GaintShark = new SeaMonster(1,"Gaint Shark","Oh no!!! your ship is being atteck by a Gaint shark",); 
   
     locations[0]= Jamaica;
 	locations[1]= Cuba;
@@ -94,13 +94,11 @@
 		console.log(currentLoc);
 		console.log(locations);
 		console.log(score);
-		//console.log(btnNorth_click()); //game crash when this console is active in the program
 		console.log(btnitem_click);
 		console.log(Treasure);
 		console.log(locations[currentLoc]);
 		var desc = locations[currentLoc].desc;	
 		updatedisplayMessage(desc);
-		
 		scoremsg(score);
 	}
 	
@@ -114,7 +112,7 @@
 		this.maps = maps; 
 		this.monster = monster;
 		this.toString = function() {
-			return this.id + "" + this.name + "" + this.desc + "" + this.item + "" + this.maps + "" + this.monster;
+			 return this.id + "" + this.name + "" + this.desc + "" + this.item + "" + this.maps + "" + this.monster;
         };
 	}					
 	function Item(id, name, desc){
@@ -122,8 +120,8 @@
 		this.name = name;
 		this.desc = desc;
 		this.toString = function() {
-                                 return this.id + "" + this.name + "" + this.desc;
-                        };
+             return this.id + "" + this.name + "" + this.desc;
+        };
 	}
     function SeaMonster(id, name, desc){
 		this.name = name;
@@ -133,51 +131,72 @@
         };
 	 }
 	 
-  // score and monster trigger function
-  
-	 function hiddenMonsters(){
+  // Counter function
+
+	 function hiddenMonsters(){ 
 		if(currentLoc == 2){
 			MonsterI +=1;
 			console.log(MonsterI);
 			return MonsterI;
-		}else if( currentLoc == 9){
+		   }else if(currentLoc == 9){
 			MonsterII +=1;
 			console.log(MonsterII);
 			return MonsterII;
+			attack();
+	    }
+	 }
+  // Trigger attack function
+  
+	 function attack(){   
+		if(MonsterI == 3 && locations[currentLoc].monster !=null){
+	       updatedisplayMessage("MonsterI!!!!");
+		   }else if(MonsterII == 2 && locations[currentLoc].monster !=null){
+		   updatedisplayMessage("MonsterI!!!!");
+		   locations[currentLoc].monster = null;
 		}
 	 }
 	 
-  //  This function works with the navigation Matrix and add score by 5 points. 
+  // This function works with the navigation Matrix and add score by 5 points. 
      
-	function nextLoc(dir) {
+	 function nextLoc(dir) {
 		var newLoc = nav[currentLoc][dir];
         if (newLoc >= 0) {
             currentLoc = newLoc;
-			hiddenMonsters();
 			score +=5;
             }else{
-               updatedisplayMessage("You cannot go that way.");
+            updatedisplayMessage("You cannot go that way.");
             }            
-         }
+     }
+	 
+ //	 Navigation button
+ 
 	 function btnNorth_click(){
 	          nextLoc(0);
-			  look();			
+			  look();
+			  hiddenMonsters();
+			  
      }
+	 
 	 function btnSouth_click(){
               nextLoc(1);
 			  look();
-            				
+			  hiddenMonsters();
+			  	  
      }
 	 function btnEast_click(){
 		      nextLoc(2);
 			  look();
+			  hiddenMonsters();
+			  
 	 }
 	 function btnWest_click(){
 		      nextLoc(3);
 			  look();
+			  hiddenMonsters();
+			  
       }
 	  
-  // this btnitem_click() function add treatures to inventory when found
+  // This btnitem_click() function add treatures to inventory when found
 	
     function btnitem_click(){
 		if(locations[currentLoc].item !=null ){
@@ -194,8 +213,7 @@
 		 for( i = 0; i<Treasure.length; i++) {
 			 document.getElementById("inventory").innerHTML += Treasure[i].name+"\n";
 			  updatedisplayMessage(Treasure[i].desc+"\n");
-		 }
-	 
+		 } 
 	}  
 	function btnGo_click(){
 		var user_input = document.getElementById("txtCommand").value;
@@ -214,7 +232,7 @@
 		                        }
     }
 	
-	// maps Animation
+	// Maps Animation
 	
 	function updatedisplayMessage(msg) {
              var target = document.getElementById("message");
@@ -231,6 +249,4 @@
   
     function btnhlp_click() {
              alert("Please Click on the navigation button below (North, South, East, West) or type in the following letters (N,S,E,W,n,s,e,w,) to navigate your ship!!!");
-    }
-			   
-			   
+    }		   
