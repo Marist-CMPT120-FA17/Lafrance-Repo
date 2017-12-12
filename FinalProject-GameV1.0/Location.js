@@ -23,7 +23,8 @@
 		 /*8*/    [7, 9, 4, 0], 
 		 /*9*/    [4, -1, -1, 2], 
 		 /*10*/   [3, -1, 2, -1],
-                ];	
+                ];
+				
 	  var VisitedLoc0 = false;
       var VisitedLoc1 = false;
       var VisitedLoc2 = false;
@@ -48,7 +49,12 @@
 	  var MagicSkullkey = new Item (2,"Magic skull key,","Awesome! You just retrieved the Magic Skull key!!");
 	  var GoldenCompass = new Item(4,"Golden Compass,","You just retrieved the Golden Compass!!");
 	  var TheSpearofPoseidon = new Item(5,"The Spear of Poseidon,","You retrived the spare of Poseidon; you can probibily use this as a weapon to defeat any sea monsters"); 
-	  
+	   
+  // Sea Monsters.
+  
+      var GaintSquid = new SeaMonster(1,"Gaint Squid","Oh no!!! your ship is being atteck by the legender Gaint Squide",);
+	  var GaintShark = new SeaMonster(1,"Gaint Shark","Oh no!!! your ship is being atteck by a Gaint shark",); 
+  
   // Locations in an array.
   
   	  var Jamaica = new Location(0,"Jamaica","You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure. Wow! It looks like you found a Treasure Chest. Click on the TAKE ITEM button to retrieve item.",TreasureChest,"CTHGamemapLoc0.gif",null);
@@ -63,11 +69,7 @@
 	  var Aruba = new Location(9,"Aruba","Welcome to Aruba. Sweet! It looks like you just found a pearl. Click on the TAKE ITEM button to retrieve item.",Rarepearl,"CTHGamemapLoc9.gif",GaintSquid);
 	  var CostaRica = new Location(10,"Costa Rica","Welcome to Costa Rica! Get ready to navigate the seven seas. Please Click on the TAKE ITEM button to retrieve item.",GoldenCompass,"CTHGamemapLoc10.gif",null);
 	  
-  // Sea Monsters.
-  
-      var GaintSquid = new SeaMonster(1,"Gaint Squid","Oh no!!! your ship is being atteck by the legender Gaint Squide",);
-	  var GaintShark = new SeaMonster(1,"Gaint Shark","Oh no!!! your ship is being atteck by a Gaint shark",); 
-  
+ 
     locations[0]= Jamaica;
 	locations[1]= Cuba;
 	locations[2]= Panama;
@@ -111,7 +113,7 @@
 		this.item = item;
 		this.maps = maps; 
 		this.monster = monster;
-		this.toString = function() {
+		this.toString = function(){
 			 return this.id + "" + this.name + "" + this.desc + "" + this.item + "" + this.maps + "" + this.monster;
         };
 	}					
@@ -119,7 +121,7 @@
 		this.id = id;
 		this.name = name;
 		this.desc = desc;
-		this.toString = function() {
+		this.toString = function(){
              return this.id + "" + this.name + "" + this.desc;
         };
 	}
@@ -137,22 +139,23 @@
 		if(currentLoc == 2){
 			MonsterI +=1;
 			console.log(MonsterI);
-			return MonsterI;
+			attack();
 		   }else if(currentLoc == 9){
 			MonsterII +=1;
 			console.log(MonsterII);
-			return MonsterII;
 			attack();
 	    }
 	 }
+	 
   // Trigger attack function
   
 	 function attack(){   
 		if(MonsterI == 3 && locations[currentLoc].monster !=null){
-	       updatedisplayMessage("MonsterI!!!!");
+	       alert("MonsterI!!!!");
 		   }else if(MonsterII == 2 && locations[currentLoc].monster !=null){
-		   updatedisplayMessage("MonsterI!!!!");
+		   alert("MonsterII!!!!");
 		   locations[currentLoc].monster = null;
+		   console.log(attack());
 		}
 	 }
 	 
@@ -176,7 +179,6 @@
 			  hiddenMonsters();
 			  
      }
-	 
 	 function btnSouth_click(){
               nextLoc(1);
 			  look();
@@ -194,7 +196,7 @@
 			  look();
 			  hiddenMonsters();
 			  
-      }
+     }
 	  
   // This btnitem_click() function add treatures to inventory when found
 	
@@ -206,15 +208,17 @@
 			}else if(locations[currentLoc].item == null){
 			updatedisplayMessage("Sorry there is no item to take.");	
 	    }
-    }	  
+    }
+	
 	function inventory(){
 		document.getElementById("inventory").innerHTML ="Inventory list:\n"
 		 var i;
 		 for( i = 0; i<Treasure.length; i++) {
 			 document.getElementById("inventory").innerHTML += Treasure[i].name+"\n";
-			  updatedisplayMessage(Treasure[i].desc+"\n");
-		 } 
-	}  
+			 updatedisplayMessage(Treasure[i].desc+"\n");
+		} 
+	}
+	
 	function btnGo_click(){
 		var user_input = document.getElementById("txtCommand").value;
 		         if (user_input == "n"|| user_input == "N" || user_input == "north") {
@@ -241,6 +245,7 @@
 			 console.log(maps);
              target.value = msg+"\n\n"+ target.value;
     } 
+	
 	function scoremsg(score){
 		document.getElementById("Score").innerHTML = "Score:"+score;
 	} 	
