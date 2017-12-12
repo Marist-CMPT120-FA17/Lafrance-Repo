@@ -52,21 +52,21 @@
 	   
   // Sea Monsters.
   
-      var GaintSquid = new SeaMonster(1,"Gaint Squid","Oh no!!! your ship is being atteck by the legender Gaint Squide",);
-	  var GaintShark = new SeaMonster(1,"Gaint Shark","Oh no!!! your ship is being atteck by a Gaint shark",); 
+      var GiantSquid = new SeaMonster(1,"Giant Squid","Oh no!!! your ship is being atteck by the legender Giant Squide",);
+	  var Giantshark = new SeaMonster(1,"Giant Shark","Oh no!!! your ship is being atteck by a Giant shark",); 
   
   // Locations in an array.
   
   	  var Jamaica = new Location(0,"Jamaica","You’re on a ship in Montego Bay, off the Coast of Jamaica ready to venture through Paradise hoping to find some treasure. Wow! It looks like you found a Treasure Chest. Click on the TAKE ITEM button to retrieve item.",TreasureChest,"CTHGamemapLoc0.gif",null);
 	  var Cuba = new Location(1,"Cuba","Welcome to Cuba don't forget to check out Havana for some Cuban cigar. Ohh! Look you just found a cigar. Don't smoke the whole thing at once.",CubanCigar,"CTHGamemapLoc1.gif",null); 
-	  var Panama = new Location(2,"Panama","Welcome to Panama City please feel free to search the city, you may be lucky to find your fortune.",null,"CTHGamemapLoc2.gif",GaintShark);
+	  var Panama = new Location(2,"Panama","Welcome to Panama City please feel free to search the city, you may be lucky to find your fortune.",null,"CTHGamemapLoc2.gif",Giantshark);
 	  var Cayman = new Location(3,"Cayman","Welcome to the Cayman Islands, don't forget to check-in by our Treasure Island Resort.",null,"CTHGamemapLoc3.gif",null);
 	  var DomincainRepublic = new Location(4,"Domincain Republic","Welcome to Dominican Republic, there is lots of buried treasure off the shore of Punta Cana. Don't forget to bring your shovel and watch out for the looters!.",null,"CTHGamemapLoc4.gif",null);
 	  var Bahamas = new Location(5,"Bahamas","Welcome to the Bahamas, I hope you get to check out the blue Lagoon Island and say hello to the dolphins.",null,"CTHGamemapLoc5.gif");
 	  var Miami = new Location(6,"Miami","Welcome to Miami, please visit the ship yard in south Miami if you would like to upgrade your ship! Oh! It looks like you found something. Please click on the TAKE ITEM button to retrieve item.",MagicSkullkey,"CTHGamemapLoc6.gif",null);
 	  var TurksandCaicos = new Location(7,"Turks and Caicos","Welcome to Turks and Caicos, don't forget to check out  the Grand Turk lighthouse there are tails of buried treasure by the OLD GODS around this area",TheSpearofPoseidon,"CTHGamemapLoc7.gif",null);
 	  var Haiti = new Location(8,"Haiti","Welcome to Haiti. You may or may not find a hidden treasure here",null,"CTHGamemapLoc8.gif",null);
-	  var Aruba = new Location(9,"Aruba","Welcome to Aruba. Sweet! It looks like you just found a pearl. Click on the TAKE ITEM button to retrieve item.",Rarepearl,"CTHGamemapLoc9.gif",GaintSquid);
+	  var Aruba = new Location(9,"Aruba","Welcome to Aruba. Sweet! It looks like you just found a pearl. Click on the TAKE ITEM button to retrieve item.",Rarepearl,"CTHGamemapLoc9.gif",GiantSquid);
 	  var CostaRica = new Location(10,"Costa Rica","Welcome to Costa Rica! Get ready to navigate the seven seas. Please Click on the TAKE ITEM button to retrieve item.",GoldenCompass,"CTHGamemapLoc10.gif",null);
 	  
  
@@ -151,7 +151,8 @@
   
 	 function attack(){   
 		if(MonsterI == 3 && locations[currentLoc].monster !=null){
-	       alert("MonsterI!!!!");
+	       alert(locations[currentLoc].monster);
+		   locations[currentLoc].monster = null;
 		   }else if(MonsterII == 2 && locations[currentLoc].monster !=null){
 		   alert("MonsterII!!!!");
 		   locations[currentLoc].monster = null;
@@ -176,8 +177,7 @@
 	 function btnNorth_click(){
 	          nextLoc(0);
 			  look();
-			  hiddenMonsters();
-			  
+			  hiddenMonsters();		  
      }
 	 function btnSouth_click(){
               nextLoc(1);
@@ -188,14 +188,12 @@
 	 function btnEast_click(){
 		      nextLoc(2);
 			  look();
-			  hiddenMonsters();
-			  
+			  hiddenMonsters();		  
 	 }
 	 function btnWest_click(){
 		      nextLoc(3);
 			  look();
-			  hiddenMonsters();
-			  
+			  hiddenMonsters();  
      }
 	  
   // This btnitem_click() function add treatures to inventory when found
